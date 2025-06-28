@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cyril Nana Boakye Benson</title>
+    <link rel="icon" href="assets/portfolio-icon.png" type="image/icon type">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+  </head>
+  <body>
+    <nav id="desktop-nav">
+      <div class="logo">Cyril Nana Boakye Benson</div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="logo">Cyril Benson</div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="#about" onclick="toggleMenu()">About</a></li>
+          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </div>
+      </div>
+    </nav>
+    <section id="profile">
+      <div class="section__pic-container">
+        <img src="./assets/profile-pic-3.png" alt="John Doe profile picture" />
+      </div>
+      <div class="section__text">
+        <p class="section__text__p1">Hello <span class="wave-emoji">👋</span>, I'm</p>
+        <h1 class="title">Cyril Nana Boakye Benson</h1>
+        <p class="section__text__p2">Statistical Programmer/Biostatistician/Data Scientist</p>
+        <div class="btn-container">
+          <!--
+          <button
+            class="btn btn-color-2"
+            onclick="window.open('./assets/Prince_Agyei_Tuffour_ML_Resume.pdf')"
+          >
+            ML Resume
+          </button>
+          -->
+          <button class="btn btn-color-1 blinking-resume" onclick="window.open('./assets/Cyril_Nana_Boakye_Benson.pdf')">
+            Resume
+          </button>
+          
+        </div>
+        <div id="socials-container">
+          <a href="https://linkedin.com/in/cyrilbenson" target="_blank">
+            <img
+              src="./assets/linkedin.png"
+              alt="My LinkedIn profile"
+              class="icon"
+            />
+          </a>
+          <a href="https://github.com/bensoncyril123" target="_blank">
+            <img
+              src="./assets/github.png"
+              alt="My Github profile"
+              class="icon"
+            />
+          </a>
+          <a href="mailto:nanaboab@oregonstate.edu" target="_blank">
+            <img
+              src="./assets/email.png"
+              alt="Email icon"
+              class="icon contact-icon email-icon"
+            />
+          </a>
+        </div>
+        
+      </div>
+    </section>
+    <section id="about">
+      <p class="section__text__p1">Get To Know More</p>
+      <h1 class="title">About Me</h1>
+      <div class="section-container">
+        <div class="section__pic-container">
+          <img
+            src="./assets/about-pic-3.jpg"
+            alt="Profile picture"
+            class="about-pic"
+          />
+        </div>
+        <div class="about-details-container">
+          <div class="about-containers">
+            <div class="details-container">
+              <img
+                src="./assets/experience.png"
+                alt="Experience icon"
+                class="icon"
+              />
+              <h3>Experience</h3>
+              <p style="text-align: center; padding: 0 1rem;font-size: 0.77rem;"> 4+ years – Data Science, Machine Learning, Biostatistics<br />2+ years – Clinical Trials & Statistical Programming</p>
+            </div>
+            <div class="details-container">
+              <img
+                src="./assets/education.png"
+                alt="Education icon"
+                class="icon"
+              />
+              <h3>Education</h3>
+              <p style="text-align: center; padding: 0 1rem;font-size: 0.77rem;">Master of Science in Statistics <br />Bachelor of Science in Actuarial Science</p>
+            </div>
+          </div>
+          <div class="text-container">
+            <p style="text-align: justify; padding: 0 1rem; font-size: 0.77rem;">
+              I'm Cyril Benson, a Data Scientist, Biostatistician and Statistical Programmer with 4+ years of experience in machine learning, statistical modeling, 
+              and predictive analytics applied across biomedical research, experimental design, and public health. 
+              Proven expertise in statistical programming and clinical trial analytics, 
+              with 2+ years of hands-on experience in Python, R, SAS, and SQL, including CDISC 
+              standards (SDTM, ADaM) and regulatory-compliant workflows. Adept in deploying GLMs, 
+              SVMs, neural networks, and survival models (Cox, AFT) to extract actionable insights.
+              Proactive and detail-oriented, committed to reproducible, data-driven solutions that enhance discovery and efficiency.
+            </p>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#experience'"
+      />
+
+    
+    </section>
+    <section id="experience">
+      <p class="section__text__p1">Explore My</p>
+      <h1 class="title">Experience</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container">
+            <h2 style="text-align: center; padding: 0 1rem; font-size: 0.9rem;" class="experience-sub-title">Skill / Tools</h2>
+            <div class="article-container">
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">Python</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">R</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">SAS</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">Tableau</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">PostgreSQL</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">Linux</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">Git</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">AWS/GCP</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Power BI</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">Excel</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">R-Shiny</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;"> CDISC SDTM & ADaM</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">MongoDB</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">TLFs </h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">ggplot2</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">SAPs</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">PROC REPORT</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">Matplotlib</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">Seaborn</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">RNA-seq, DESeq2, scRNA-seq</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;"> Data wrangling</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">ETL pipelines</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="details-container">
+            <h2 style="text-align: center; padding: 0 1rem; font-size: 0.9rem;" class="experience-sub-title">Concept / Methodology </h2>
+            <div class="article-container">
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">Random Forest</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">SVMs</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">Biostatistical Modeling</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">KNN</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">XGBoost</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">Logistic Regression</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">Algorithms</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">Gradient Descent</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">Deep Learning</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">Experimental Design</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">PCA & t-SNE</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">Scikit Learn</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">EDA</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">Power analysis</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Data Modeling</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">Survival Analysis</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Probability Theory</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">Data Visualization</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+               
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">Hypothesis Testing</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+
+                <div>
+                  <h3 style="text-align: justify; padding: 0 1rem; font-size: 0.8rem;">Feature Engineering</h3>
+                  <p style="text-align: justify; padding: 0 1rem; font-size: 0.7rem;">Experienced</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#projects'"
+      />
+    
+ <!--
+<section id="experience">
+        <p class="section__text__p1">Explore My</p>
+        <h1 class="title">Experience</h1>
+        <div class="experience-details-container">
+          <div class="about-containers">
+      
+        
+            <div class="details-container">
+              <h2 class="experience-sub-title"> Statistical Programming & Data Science </h2>
+              <div class="article-container">
+                <table class="experience-table">
+                  <tr><th></th><th>Skill / Toolset</th><th>Proficiency</th></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>Python, R, SAS, SQL (PostgreSQL, MySQL)</td><td>Experienced</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>CDISC SDTM & ADaM, FDA/ICH E9, Define-XML</td><td>Intermediate</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>TLF generation, PROC REPORT, macro automation in SAS</td><td>Experienced</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>R Markdown, Jupyter, Git, version control practices</td><td>Experienced</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>ETL pipelines, pandas/dplyr, data wrangling</td><td>Experienced</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>Tableau, Power BI, R-Shiny, ggplot2, seaborn, matplotlib</td><td>Intermediate</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>SQL, dbplyr, sqldf, BigQuery, SQLite</td><td>Intermediate</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>GCP (BigQuery), AWS S3, Unix/Linux shell scripting</td><td>Intermediate</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>SAPs, data dictionaries, QC documentation</td><td>Intermediate</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>Cross-sectional, high-dimensional omics</td><td>Experienced</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>Data cleaning automation, imputation strategies </td><td>Intermediate</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>Data pipeline orchestration (Airflow, Luigi)</td><td>Intermediate</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>Interactive dashboards (Shiny, Dash, Streamlit)</td><td>Intermediate</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>Metadata-driven programming, reusable templates</td><td>Intermediate</td></tr>
+                </table>
+              </div>
+            </div>
+      
+            
+            <div class="details-container">
+              <h2 class="experience-sub-title">Machine Learning & Statistical Modeling</h2>
+              <div class="article-container">
+                <table class="experience-table">
+                  <tr><th></th><th>Concept / Methodology</th><th>Proficiency</th></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>Logistic Regression, SVMs, RF, XGBoost, KNN, Decision Trees</td><td>Experienced</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>MLPs, CNNs, RNNs (TensorFlow, PyTorch)</td><td>Intermediate</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>Kaplan-Meier, Cox PH, AFT models</td><td>Intermediate</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>Bayesian MCMC, Gibbs, hierarchical models (brms, rstan)</td><td>Intermediate</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>PCA, t-SNE, UMAP, Factor Analysis</td><td>Experienced</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>LASSO, Ridge, Elastic Net, splines</td><td>Experienced</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>GLMs, GLMMs, Zero-inflated, Negative Binomial</td><td>Experienced</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>ANOVA, MANOVA, chi-square, permutation, FDR</td><td>Experienced</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>HIV/epidemiology models, mixed-effects regression</td><td>Experienced</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>RNA-seq, DESeq2, scRNA-seq, GSEA</td><td>Intermediate</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>Convex optimization, gradient descent, EM, Newton-Raphson</td><td>Experienced</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>Linear algebra, stochastic processes, calculus</td><td>Experienced</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>Power analysis, blocking, randomization, factorial design</td><td>Experienced</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>Model evaluation: ROC, AUROC, AIC, BIC, log-loss, precision/recall</td><td>Experienced</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>Hyperparameter tuning: GridSearchCV, random search, Bayesian opt</td><td>Intermediate</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>Bootstrapping, jackknife, Monte Carlo simulations</td><td>Experienced</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>Missing data: multiple imputation, EM, predictive mean matching</td><td>Experienced</td></tr>
+                  <tr><td><img src="./assets/checkmark.png" class="icon" /></td><td>Simulation-based inference, sensitivity analysis, posterior predictive checks</td><td>Intermediate</td></tr>
+                </table>
+              </div>
+            </div>
+      
+          </div>
+        </div>
+        
+      </section> 
+     
+    -->
+
+
+
+
+
+
+
+
+
+
+    
+    <section id="projects">
+      <p class="section__text__p1">Browse My Recent</p>
+      <h1 class="title">Projects</h1>
+      <div class="experience-details-container">
+        <div class="projects-wrapper" style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; align-items: stretch;">
+    
+          <div class="about-containers">
+            <div class="details-container color-container">
+              <h2 class="experience-sub-title project-title">
+                Predictive Modeling in Low- and High-Dimensional Settings: A Machine Learning Approach to Idiopathic Pulmonary Fibrosis (IPF) Progression
+              </h2>
+              <div class="article-container">
+                <img src="./assets/pic03.jpg" alt="Air Quality Analysis" class="project-img ipf-img" />
+              </div>
+              <p style="text-align: justify; padding: 0 1rem; font-size: 0.77rem;">
+                This project applies supervised classification methods to predict 
+                disease progression in Idiopathic Pulmonary Fibrosis (IPF) 
+                using clinical and high-dimensional proteomic data from 60 patients. 
+                The binary outcome is modeled under two regimes: a low-dimensional 
+                setting with 14 selected covariates and a high-dimensional setting with 1,129 features. 
+                In the low-dimensional phase, logistic regression, decision trees, and random forests are compared. 
+                Random forests outperform others, achieving 83.3% test accuracy and AUC of 0.984. In the high-dimensional phase,
+                 LASSO logistic regression and random forests are applied. LASSO performs poorly (AUC ≈ 0.51), 
+                 while random forests yield better results (accuracy = 61.1%, AUC = 0.57), 
+                 though performance degrades due to limited sample size and weak signal.
+                  Models are evaluated using cross-validation and standard classification metrics.
+              </p>
+              <div class="btn-container" style="text-align: center;">
+                <button class="btn btn-color-2 project-btn" onclick="window.open('./assets/Final_Written_Report__Masters.pdf', '_blank')">
+                  View Project
+                </button>
+              </div>
+              
+            </div>
+          </div>
+    
+          <div class="about-containers">
+            <div class="details-container color-container">
+              <h2 class="experience-sub-title project-title">
+                Survival Analysis of Treatment Efficacy in Primary Biliary Cirrhosis
+              </h2>
+              <div class="article-container">
+                <img src="./assets/project-8.png" alt="Anime Rec System" class="project-img biliary-img" />
+              </div>
+              <p style="text-align: justify; padding: 0 1rem; font-size: 0.77rem;">
+                This study evaluates survival outcomes in Primary Biliary Cirrhosis (PBC) patients using the PBC3 dataset to assess 
+                the efficacy of Cyclosporin A (CyA) treatment. Kaplan-Meier analysis, conducted in SAS, revealed no significant 
+                difference in survival between treatment and placebo groups, but disease stage, sex, and bilirubin levels were
+                 critical predictors. The Cox Proportional Hazards model and Weibull Accelerated Failure Time (AFT) model, also 
+                 implemented in SAS, confirmed that advanced disease stages, higher bilirubin, and lower albumin levels significantly 
+                 reduced survival time, while treatment with CyA showed limited impact. Diagnostic checks validated the model assumptions, 
+                 highlighting the importance of robust statistical methods in SAS to guide clinical decision-making for PBC management.
+              </p>
+              <div class="btn-container" style="text-align: center;">
+                <button class="btn btn-color-2 project-btn" onclick="window.open('./assets/Survival_Analysis__Primary_Biliary_Cirrhosis.pdf', '_blank')">View Project</button>
+              </div>
+            </div>
+          </div>
+    
+    <div class="about-containers">
+      <div class="details-container color-container">
+        <h2 class="experience-sub-title project-title">
+          Predictive Modeling and Data Analysis of Breast Cancer
+        </h2>
+        <div class="article-container">
+          <img src="./assets/project-5.png" alt="Travel Tracker" class="project-img cancer-img" />
+        </div>
+        <p style="text-align: justify; padding: 0 1rem; font-size: 0.77rem;">
+          Conducted in-depth exploratory data analysis on Fine Needle Aspiration (FNA) images,
+          this project applied machine learning techniques to enhance breast cancer diagnostics.
+          Five classification models were evaluated—Logistic Regression, K-Nearest Neighbors (KNN),
+          Random Forests, Support Vector Machines (SVM) with RBF kernel, and Gradient Boosting.
+          The SVM with RBF kernel achieved the highest accuracy of 98.25%, demonstrating superior performance.
+          These findings highlight the potential of machine learning to improve diagnostic accuracy and support
+          healthcare professionals in making precise, timely diagnoses.
+        </p>
+        <div class="btn-container" style="text-align: center;">
+          <button class="btn btn-color-2 project-btn" onclick="window.open('./assets/Cancer Project.html', '_blank')">View Project</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-containers">
+      <div class="details-container color-container">
+        <h2 class="experience-sub-title project-title">
+          Air Quality Analysis With R-shiny
+        </h2>
+        <div class="article-container">
+          <img src="./assets/project-6.png" alt="Air Quality Analysis" class="project-img shiny-img" />
+        </div>
+        <p style="text-align: justify; padding: 0 1rem; font-size: 0.77rem;">
+          Developed an R Shiny app to conduct a detailed analysis of PM2.5
+          levels across major cities in the USA and India. Utilized advanced data
+          manipulation and visualization techniques to enable users to explore air
+          quality trends, generate summary statistics, and perform targeted analyses
+          by selecting specific countries, cities, and date ranges. The app features
+          dynamic plots with contextual annotations for significant events, providing
+          critical insights into air quality fluctuations and their correlations with
+          major occurrences. This tool supports data-driven environmental assessments and informs public health decisions.
+        </p>
+        <div class="btn-container" style="text-align: center;">
+          <button class="btn btn-color-2 project-btn" onclick="window.open('https://cyrilbenson1.shinyapps.io/Assignmentn/', '_blank')">View Project</button>
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="about-containers">
+      <div class="details-container color-container">
+        <h2 class="experience-sub-title project-title">
+          Analyzing Survival Outcomes On The Titanic Using Iteratively Reweighted Least Squares (IRLS) And Simulation Techniques
+        </h2>
+        <div class="article-container">
+          <img src="./assets/pic04.jpg" alt="Air Quality Analysis" class="project-img titanic-img" />
+        </div>
+        <p style="text-align: justify; padding: 0 1rem; font-size: 0.77rem;">
+          This project analyzes Titanic survival outcomes using IRLS logistic regression and Monte Carlo simulations,
+          revealing that gender, age, and class strongly influenced survival. Women, younger passengers, and higher-class
+          individuals had better survival chances, while increased lifeboat capacity offered modest improvements. Variance
+          reduction techniques, especially antithetic variates, enhanced the precision of the simulations.
+          The study demonstrates the power of statistical methods to uncover insights and inform crisis management strategies.
+        </p>
+        <div class="btn-container" style="text-align: center;">
+          <button class="btn btn-color-2 project-btn" onclick="window.open('./assets/Analyzing_Survival_Outcomes___IRLS_and_Simulation_Techniques.pdf', '_blank')">View Project</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-containers">
+      <div class="details-container color-container">
+        <h2 class="experience-sub-title project-title">
+          Modeling Female Sex Worker Distribution And Determinants In Sub Saharan Africa To Enhance HIV Prevention Strategies
+        </h2>
+        <div class="article-container">
+          <img src="./assets/project-7.png" alt="Modeling FSW Distribution" class="project-img hiv-img" />
+        </div>
+        <p style="text-align: justify; padding: 0 1rem; font-size: 0.77rem;">
+          This project investigates the distribution of Female Sex Workers (FSWs) in sub-Saharan Africa using
+          a negative binomial mixed-effects model, incorporating environmental and sociological variables.
+          Key findings reveal that population density, urbanization levels (built index), temperature, crime rates,
+          and insect net usage significantly influence FSW counts across regions. Random effects for country, region,
+          and year accounted for unmeasured spatial and temporal variability, highlighting the importance of contextual factors.
+          These insights provide critical guidance for targeted HIV prevention strategies by identifying key determinants
+          and emphasizing the need for integrated public health interventions.
+        </p>
+        <div class="btn-container" style="text-align: center;">
+          <button class="btn btn-color-2 project-btn" onclick="window.open('./assets/Modeling Female Sex Worker Distribution - HIV.pdf', '_blank')">View Project</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-containers">
+      <div class="details-container color-container">
+        <h2 class="experience-sub-title project-title">
+          Bayesian Linear Regression with Gibbs Sampling: Modeling Healthcare Costs Using Demographic and Lifestyle Predictors
+        </h2>
+        <div class="article-container">
+          <img src="./assets/pikeee.png" alt="Modeling FSW Distribution" class="project-img gibbs-img" />
+        </div>
+        <p style="text-align: justify; padding: 0 1rem; font-size: 0.77rem;">
+          This project implements Bayesian linear regression using Gibbs sampling to model U.S. medical insurance charges
+          as a function of standardized covariates including age, sex, BMI, number of children, smoking status, and geographic region.
+          Conjugate priors are specified: a multivariate normal prior on the regression coefficients and an inverse-gamma prior on the error variance.
+          The conjugate structure yields closed-form full conditional distributions, enabling efficient Gibbs sampling without approximation.
+          Posterior inference identifies smoking, age, and BMI as dominant predictors with high posterior inclusion probability,
+          while sex and several regional effects are negligible. Diagnostics confirm convergence and stability of the Markov chain.
+          Frequentist linear regression estimates are presented for baseline comparison and show consistent directionality,
+          though the Bayesian framework offers more comprehensive uncertainty quantification.
+        </p>
+        <div class="btn-container" style="text-align: center;">
+          <button class="btn btn-color-2 project-btn" onclick="window.open('./assets/Bayesian_Linear_Regression_with_Gibbs_Sampling.pdf', '_blank')">View Project</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-containers">
+      <div class="details-container color-container">
+        <h2 class="experience-sub-title project-title">
+          Predicting Gene Expression Specificity in Maize Pollen
+        </h2>
+        <div class="article-container">
+          <img src="./assets/pie.png" alt="Modeling FSW Distribution" class="project-img gene-img" />
+        </div>
+        <p style="text-align: justify; padding: 0 1rem; font-size: 0.77rem;">
+          This project develops a binary classification model to predict maize gene pollen specificity
+          using only genomic sequence features, bypassing the cost and complexity of transcriptomic or proteomic profiling.
+          The dataset includes 12,725 genes and 2,626 sequence-derived features sourced from MaizeGDB. After initial filtering
+          to remove low-variance and highly correlated features, dimensionality reduction techniques such as PCA and t-SNE were applied
+          but revealed limited class separation. A logistic regression model with LASSO regularization was trained to enforce sparsity and
+          identify informative predictors. The model achieved an AUROC of 0.7437 on the held-out test set,
+          indicating moderate predictive performance, with high specificity and lower sensitivity.
+          Analysis of feature weights highlighted biologically interpretable sequence motifs, including the
+          overrepresentation of certain 3-mers potentially linked to cis-regulatory elements.
+        </p>
+        <div class="btn-container" style="text-align: center;">
+          <button class="btn btn-color-2 project-btn" onclick="window.open('./assets/Predicting Gene Expression Specificity in Maize Pollen.pdf', '_blank')">View Project</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-containers">
+      <div class="details-container color-container">
+        <h2 class="experience-sub-title project-title">
+          Spatial Analysis of Wildfire Damage in California: Identifying Hotspots and Clustering Patterns
+        </h2>
+        <div class="article-container">
+          <img src="./assets/pikee.png" alt="Modeling FSW Distribution" class="project-img fire-img" />
+        </div>
+        <p style="text-align: justify; padding: 0 1rem; font-size: 0.77rem;">
+          This project explores spatial statistical methods to analyze the distribution
+          and intensity of wildfire damage in California using a subset of 10,000 stratified wildfire incidents.
+          The data includes geographic coordinates and ordinal damage levels,
+          which were converted to numeric scores to facilitate modeling.
+          Global and local spatial autocorrelation were detected using Moran’s I
+          and Geary’s C, both indicating significant clustering of similar damage levels.
+          Spatial autoregressive (SAR) and conditional autoregressive (CAR) models were fitted,
+          showing strong localized spatial dependence with little sensitivity to neighborhood cutoff.
+        </p>
+        <div class="btn-container" style="text-align: center;">
+          <button class="btn btn-color-2 project-btn" onclick="window.open('./assets/Spatial Analysis of Wildfire Damage in California.pdf', '_blank')">View Project</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-containers">
+      <div class="details-container color-container">
+        <h2 class="experience-sub-title project-title">
+          Climate Change Remains Top Global Threat Across 19‑Country Survey
+        </h2>
+        <div class="article-container">
+          <img src="./assets/pic07.jpg" alt="Air Quality Analysis" class="project-img climate-img" />
+        </div>
+        <p style="text-align: justify; padding: 0 1rem; font-size: 0.77rem;">
+          This project evaluates the Pew Research Center's 2022 global threats survey,
+          focusing on climate change perceptions across 19 advanced economies and exploring
+          the optimal sample size needed to achieve a small margin of error. Using data from
+          the American Trends Panel (ATP) for the U.S., a margin of error formula was applied
+          to determine the relationship between sample size and precision, revealing that reducing
+          the margin of error significantly requires a substantial increase in sample size.
+          Key limitations, such as sampling bias, differential incentives, and non-response bias,
+          were highlighted alongside the strengths of stratification and rigorous survey methods.
+        </p>
+        <div class="btn-container" style="text-align: center;">
+          <button class="btn btn-color-2 project-btn" onclick="window.open('./assets/Climate Change Remains Top Global threat.pdf', '_blank')">View Project</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+    
+    
+
+
+
+
+    
+  
+</section>
+<section id="contact">
+  <p class="section__text__p1">Get in Touch</p>
+  <h1 class="title">Contact Me</h1>
+  <div class="contact-info-upper-container">
+    <div class="contact-info-container">
+      <img
+        src="./assets/email.png"
+        alt="Email icon"
+        class="icon contact-icon email-icon"
+      />
+      <p><a href="mailto:nanaboab@oregonstate.edu">nanaboab@oregonstate.edu</a></p>
+    </div>
+    <div class="contact-info-container">
+      <img
+        src="./assets/linkedin.png"
+        alt="LinkedIn icon"
+        class="icon contact-icon"
+      />
+      <p><a href="https://www.linkedin.com/in/cyrilbenson" target="_blank">LinkedIn</a></p>
+    </div>
+  </div>
+</section>
+<footer>
+  <nav>
+    <div class="nav-links-container">
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <p>Copyright &#169; <span id="year"></span> Cyril Benson. All Rights Reserved.</p>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  
+</footer>
+<script src="script.js"></script>
+</body>
+  
+</html>
