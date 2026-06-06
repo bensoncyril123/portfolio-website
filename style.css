@@ -62,6 +62,11 @@ a:hover {
   font-size: 2rem;
 }
 
+.logo img {
+  height: 80px;
+  width: auto;
+}
+
 .logo:hover {
   cursor: default;
 }
@@ -165,6 +170,7 @@ section {
 #profile {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 5rem;
   height: 80vh;
 }
