@@ -87,6 +87,10 @@
     gap: 0.5rem;
     text-align: center;
   }
+  #profile {
+    height: auto;
+    padding-bottom: 2rem;
+  }
   .section__pic-container {
     width: 220px;
     height: 220px;
