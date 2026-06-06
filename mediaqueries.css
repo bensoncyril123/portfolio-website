@@ -151,13 +151,16 @@
   }
   .project-img {
     width: 100%;
-    height: auto;
-    object-fit: contain;
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
     border-radius: 1rem;
     display: block;
+    margin: 0 auto;
   }
   .color-container {
     width: 100%;
     box-sizing: border-box;
+    padding: 0;
   }
 }
