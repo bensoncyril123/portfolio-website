@@ -20,7 +20,10 @@
   }
   #experience,
   .experience-details-container {
-    margin-top: 2rem;
+    margin-top: 0.5rem;
+  }
+  #about {
+    padding-bottom: 0.5rem;
   }
   #profile,
   .section-container {
