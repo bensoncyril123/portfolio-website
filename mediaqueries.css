@@ -57,16 +57,28 @@
     height: 83vh;
     margin-bottom: 0;
   }
+  .article-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem 1rem;
+  }
   article {
-    font-size: 0.77rem;
-    width: calc(50% - 1rem);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  article .icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
   }
   article h3 {
     font-size: 0.77rem !important;
-  }
-  .article-container {
-    gap: 0.8rem;
-    justify-content: flex-start;
+    font-weight: 400 !important;
+    padding: 0 !important;
+    margin: 0;
   }
   footer nav {
     height: fit-content;
