@@ -143,4 +143,7 @@
   .text-container {
     text-align: justify;
   }
+  .about-bio {
+    font-size: 0.77rem;
+  }
 }
