@@ -59,13 +59,25 @@
   }
   article {
     font-size: 0.77rem;
-    width: calc(50% - 1rem);
+    width: calc(50% - 0.5rem);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.4rem;
   }
   article h3 {
     font-size: 0.77rem !important;
+    font-weight: 400 !important;
+    padding: 0 !important;
+    margin: 0;
+  }
+  article .icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
   }
   .article-container {
-    gap: 0.8rem;
+    gap: 0.6rem;
     justify-content: flex-start;
   }
   footer nav {
