@@ -42,7 +42,7 @@ nav {
 .nav-links {
   gap: 2rem;
   list-style: none;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 }
 
 a {
@@ -59,7 +59,7 @@ a:hover {
 }
 
 .logo {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
 }
 
 .logo img {
@@ -211,12 +211,12 @@ section {
 }
 
 .section__text__p2 {
-  font-size: 2rem;
+  font-size: 1.85rem;
   margin-bottom: 1rem;
 }
 
 .title {
-  font-size: 3.5rem;
+  font-size: 3.2rem;
   text-align: center;
 }
 
