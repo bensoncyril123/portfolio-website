@@ -88,9 +88,11 @@
     text-align: center;
   }
   .section__pic-container {
-    width: 46vw;
-    height: 46vw;
-    margin: 0 auto 2rem auto;
+    width: 220px;
+    height: 220px;
+    min-width: unset;
+    min-height: unset;
+    margin: 0 auto 1.5rem auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -100,6 +102,9 @@
     height: 100%;
     object-fit: cover;
     object-position: center 15%;
+  }
+  .section__text__p1 {
+    display: none;
   }
   .section__text__p2 {
     font-size: 1.25rem;
