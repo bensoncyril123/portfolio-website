@@ -96,7 +96,8 @@
     font-size: 1.25rem;
   }
   .title {
-    font-size: 2rem;
+    font-size: 1.4rem;
+    white-space: nowrap;
   }
   .text-container {
     text-align: justify;
