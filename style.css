@@ -654,6 +654,14 @@ footer p {
   display: block;
 }
 
+.healthcare-img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 2rem;
+  display: block;
+}
+
 .cancer-img {
   width: 100%;
   height: 400px;
