@@ -9,8 +9,6 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #0a192f;
-  color: #ccd6f6;
 }
 
 html {
@@ -18,7 +16,7 @@ html {
 }
 
 p {
-  color: #a8b2d8;
+  color: rgb(85, 85, 85);
 }
 
 /* ── ANIMATIONS ── */
@@ -140,8 +138,8 @@ nav {
   left: 0;
   right: 0;
   z-index: 1000;
-  background-color: #0a192f;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+  background-color: white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 }
 
 .nav-links {
@@ -151,7 +149,7 @@ nav {
 }
 
 a {
-  color: #ccd6f6;
+  color: black;
   text-decoration: none;
   text-decoration-color: white;
 }
@@ -199,7 +197,7 @@ a:hover {
 .hamburger-icon span {
   width: 100%;
   height: 2px;
-  background-color: #ccd6f6;
+  background-color: black;
   transition: all 0.3 ease-in-out;
 }
 
@@ -219,7 +217,7 @@ a:hover {
   padding: 6px;
   text-align: center;
   font-size: 1rem;
-  color: #ccd6f6;
+  color: black;
   text-decoration: none;
   transition: all 0.3 ease-in-out;
 }
@@ -453,7 +451,7 @@ section {
 }
 
 .experience-sub-title {
-  color: #a8b2d8;
+  color: rgb(85, 85, 85);
   font-weight: 600;
   font-size: 1.75rem;
   margin-bottom: 2rem;
@@ -510,11 +508,11 @@ article .icon {
 
 .project-title {
   margin: 1rem;
-  color: #ccd6f6;
+  color: black;
 }
 
 .project-btn {
-  color: #ccd6f6;
+  color: black;
   border-color: rgb(163, 163, 163);
 }
 
@@ -633,13 +631,13 @@ footer p {
 
 .project-title {
   margin: 1rem;
-  color: #ccd6f6;
+  color: black;
   font-size: 1.1rem;
   line-height: 1.4;
 }
 
 .project-btn {
-  color: #ccd6f6;
+  color: black;
   border-color: rgb(163, 163, 163);
 }
 .biliary-img {
