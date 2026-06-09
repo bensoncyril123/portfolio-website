@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Healthcare Analytics — Cyril Benson</title>
+  <link rel="icon" href="assets/portfolio-icon.png" type="image/icon type">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { background: #f4f6fb; font-family: 'Segoe UI', sans-serif; color: #1e1e2e; margin: 0; }
+    .project-page { max-width: 980px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
+
+    /* NAV */
+    .back-btn { display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 2rem; color: #4a90e2; text-decoration: none; font-size: 0.88rem; font-weight: 600; letter-spacing: 0.02em; }
+    .back-btn:hover { text-decoration: underline; }
+
+    /* HERO */
+    .hero-img { width: 100%; max-height: 420px; object-fit: cover; border-radius: 16px; margin-bottom: 2.5rem; box-shadow: 0 8px 32px rgba(0,0,0,0.14); }
+    .project-title { font-size: 1.85rem; font-weight: 800; margin-bottom: 0.4rem; color: #1a1a2e; line-height: 1.25; }
+    .project-subtitle { font-size: 0.95rem; color: #555; margin-bottom: 1.5rem; line-height: 1.6; }
+
+    /* TAGS */
+    .tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 2rem; }
+    .tag { background: #e8f0fe; color: #2e6fcf; padding: 0.28rem 0.75rem; border-radius: 20px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.02em; }
+
+    /* ACTION BUTTONS */
+    .action-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: #1a1a2e; color: white; padding: 0.65rem 1.4rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.88rem; transition: background 0.2s; }
+    .btn-primary:hover { background: #4a90e2; }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; background: white; color: #1a1a2e; border: 2px solid #1a1a2e; padding: 0.6rem 1.35rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.88rem; transition: all 0.2s; }
+    .btn-secondary:hover { background: #1a1a2e; color: white; }
+
+    /* METRICS */
+    .finding-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1rem; margin: 1.5rem 0 2.5rem; }
+    .finding-card { background: white; border-radius: 12px; padding: 1.3rem 1rem; box-shadow: 0 2px 12px rgba(0,0,0,0.07); text-align: center; border-top: 3px solid #4a90e2; }
+    .finding-card .metric { font-size: 1.65rem; font-weight: 800; color: #2e6fcf; }
+    .finding-card .label { font-size: 0.72rem; color: #777; margin-top: 0.35rem; line-height: 1.4; }
+
+    /* SECTIONS */
+    .section-title { font-size: 1.2rem; font-weight: 800; color: #1a1a2e; margin: 3rem 0 0.9rem; padding-left: 0.85rem; border-left: 4px solid #4a90e2; letter-spacing: 0.01em; }
+    .phase-title { font-size: 0.95rem; font-weight: 700; color: #2c3e50; margin: 2rem 0 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.82rem; }
+    p { font-size: 0.9rem; line-height: 1.85; color: #2d2d2d; text-align: justify; margin-bottom: 0.85rem; }
+
+    /* TABLES */
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.83rem; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+    th { background: #1a1a2e; color: white; padding: 0.65rem 0.9rem; text-align: left; font-size: 0.8rem; letter-spacing: 0.03em; }
+    td { padding: 0.55rem 0.9rem; border-bottom: 1px solid #eaecf4; }
+    tr:nth-child(even) td { background: #f5f7ff; }
+    tr:last-child td { border-bottom: none; }
+
+    /* CALLOUTS */
+    .highlight { background: #fff8e1; border-left: 4px solid #f6c90e; padding: 0.85rem 1.1rem; border-radius: 6px; font-size: 0.88rem; margin: 1.2rem 0; color: #2d2d2d; }
+    .insight-box { background: #f0f7ff; border-left: 4px solid #4a90e2; padding: 0.85rem 1.1rem; border-radius: 6px; font-size: 0.88rem; margin: 1.2rem 0; color: #1a1a2e; }
+
+    /* CHARTS */
+    .chart-img { width: 100%; border-radius: 12px; margin: 1rem 0 0.4rem; box-shadow: 0 3px 14px rgba(0,0,0,0.09); }
+    .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1rem 0 0.4rem; }
+    .chart-grid img { width: 100%; border-radius: 12px; box-shadow: 0 3px 14px rgba(0,0,0,0.09); }
+    .chart-caption { font-size: 0.74rem; color: #888; text-align: center; margin-bottom: 1.5rem; font-style: italic; }
+
+    /* NOTEBOOK CTA */
+    .notebook-cta { background: linear-gradient(135deg, #1a1a2e 0%, #2e4a7a 100%); border-radius: 14px; padding: 2rem 2.5rem; margin: 3rem 0; color: white; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .notebook-cta h3 { font-size: 1.1rem; margin: 0 0 0.4rem; color: #7eb8f7; }
+    .notebook-cta p { font-size: 0.85rem; color: #b0c4de; margin: 0; text-align: left; }
+    .notebook-cta .btn-dl { background: #4a90e2; color: white; padding: 0.65rem 1.4rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.88rem; white-space: nowrap; }
+    .notebook-cta .btn-dl:hover { background: #357abd; }
+
+    /* CONCLUSION */
+    .conclusion-box { background: #1a1a2e; color: white; border-radius: 14px; padding: 2rem 2.5rem; margin-top: 3rem; }
+    .conclusion-box h3 { color: #7eb8f7; margin-bottom: 0.85rem; font-size: 1.1rem; }
+    .conclusion-box p { color: #c8d8ec; font-size: 0.88rem; text-align: left; }
+    .conclusion-box ul { margin: 0.5rem 0 0.75rem 1.2rem; }
+    .conclusion-box li { color: #c8d8ec; font-size: 0.87rem; margin-bottom: 0.4rem; line-height: 1.6; }
+
+    .author { text-align: center; margin-top: 3rem; font-size: 0.82rem; color: #999; }
+    @media (max-width: 640px) { .chart-grid { grid-template-columns: 1fr; } .project-title { font-size: 1.4rem; } .notebook-cta { flex-direction: column; } }
+  </style>
+</head>
+<body>
+<div class="project-page">
+
+  <a class="back-btn" href="index.html">← Back to Portfolio</a>
+
+  <img src="./assets/healthcare-analytics.png" alt="Healthcare Analytics" class="hero-img" />
+
+  <h1 class="project-title">Healthcare Analytics: End-to-End Biostatistics & Machine Learning Pipeline</h1>
+  <p class="project-subtitle">
+    A rigorous six-phase analytical framework applied to 54,966 synthetic patient records —
+    integrating classical biostatistical inference, survival analysis, multi-class predictive modelling,
+    SHAP explainability, and unsupervised patient segmentation.
+  </p>
+
+  <div class="tags">
+    <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Scikit-learn</span>
+    <span class="tag">XGBoost</span><span class="tag">Random Forest</span><span class="tag">Lifelines</span>
+    <span class="tag">SHAP</span><span class="tag">UMAP</span><span class="tag">K-Means</span>
+    <span class="tag">Plotly</span><span class="tag">Survival Analysis</span><span class="tag">Biostatistics</span>
+  </div>
+
+
+  <!-- KEY METRICS -->
+  <div class="finding-grid">
+    <div class="finding-card"><div class="metric">54,966</div><div class="label">Patient Records Analysed</div></div>
+    <div class="finding-card"><div class="metric">6</div><div class="label">Analytical Phases</div></div>
+    <div class="finding-card"><div class="metric">0.43</div><div class="label">Best Model Macro F1<br>(Random Forest)</div></div>
+    <div class="finding-card"><div class="metric">0.629</div><div class="label">Best ROC-AUC (OvR)</div></div>
+    <div class="finding-card"><div class="metric">0.506</div><div class="label">Cox PH Concordance<br>(near-random baseline)</div></div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="section-title">Project Overview</div>
+  <p>
+    This project presents a production-grade biostatistics and machine learning pipeline designed to
+    interrogate a healthcare dataset from multiple analytical perspectives simultaneously. The framework
+    was applied to a synthetic dataset of 55,500 patient records — generated via Python's Faker library
+    to simulate real-world electronic health records — and encompasses every stage of the analytical
+    lifecycle: data provenance, quality assurance, statistical inference, time-to-event modelling,
+    supervised classification, model explainability, and unsupervised patient stratification.
+  </p>
+  <p>
+    The primary inferential target is <strong>Test Results</strong> — a three-class outcome (Normal,
+    Abnormal, Inconclusive) — alongside <strong>Length of Stay (LOS)</strong> as a time-to-event outcome
+    for survival analysis. The analytical design was intentionally comprehensive: rather than optimising
+    for a single output, the pipeline was structured to triangulate findings across methods, ensuring
+    that any signal present in the data would be independently corroborated by multiple approaches.
+  </p>
+
+  <!-- PHASE 1 -->
+  <div class="section-title">Phase 1 — Data Provenance & Feature Engineering</div>
+  <p>
+    Prior to any inferential work, a systematic data integrity audit was conducted. The raw dataset
+    of 55,500 records contained <strong>534 exact duplicate rows</strong> (~1.0%), removed via
+    deterministic deduplication with index reset. <strong>108 records</strong> presented negative
+    billing amounts (range: −$2,008 to −$24), consistent with sign-encoding errors rather than
+    corrupted observations — these were corrected via absolute value transformation, preserving all
+    records while eliminating the anomaly.
+  </p>
+  <p>
+    Date fields were cast to <code>datetime64</code> and a clinically relevant derived feature —
+    <strong>Length of Stay</strong> — was engineered as the integer difference between discharge
+    and admission dates. The resulting LOS distribution spans 1–30 days (μ = 15.5, σ ≈ 8.6),
+    with no physiologically implausible values. Column identifiers were standardised to lowercase
+    snake_case and the cleaned dataset exported to a versioned <code>data/cleaned/</code> partition.
+  </p>
+
+  <!-- PHASE 2 -->
+  <div class="section-title">Phase 2 — Exploratory Data Analysis</div>
+  <p>
+    EDA was structured across four analytical dimensions: demographics, clinical patterns,
+    financial metrics, and operational performance. All visualisations were produced using Plotly
+    for interactivity and reproducibility.
+  </p>
+
+  <div class="chart-grid">
+    <div>
+      <img src="./assets/chart_age.png" alt="Age Distribution" />
+      <p class="chart-caption">Age distribution — near-uniform across 13–89 years, mean 51.5</p>
+    </div>
+    <div>
+      <img src="./assets/chart_test_results.png" alt="Test Results Distribution" />
+      <p class="chart-caption">Target variable — perfectly balanced tri-class distribution (33.3% each)</p>
+    </div>
+  </div>
+
+  <div class="chart-grid">
+    <div>
+      <img src="./assets/chart_conditions.png" alt="Medical Conditions" />
+      <p class="chart-caption">Condition prevalence — six diagnoses in near-equal proportions (~9,200 each)</p>
+    </div>
+    <div>
+      <img src="./assets/chart_billing.png" alt="Billing by Admission Type" />
+      <p class="chart-caption">Billing by admission type — distributions statistically indistinguishable</p>
+    </div>
+  </div>
+
+  <img src="./assets/chart_correlation.png" alt="Correlation Matrix" class="chart-img" />
+  <p class="chart-caption">Pearson correlation matrix — near-zero off-diagonal values across all numeric variable pairs</p>
+
+  <div class="insight-box">
+    <strong>Key EDA Finding:</strong> The perfectly balanced target distribution (33.3% per class)
+    eliminates the need for class-imbalance correction strategies (SMOTE, class weighting) —
+    a significant advantage for downstream modelling. Cramér's V analysis of categorical associations
+    confirms variable independence throughout, with no pair exceeding V = 0.05 off the diagonal.
+  </div>
+
+  <!-- PHASE 3 -->
+  <div class="section-title">Phase 3 — Statistical Inference</div>
+
+  <div class="phase-title">Chi-Square Tests of Independence</div>
+  <p>
+    Pearson chi-square tests were performed between each categorical predictor and the outcome variable
+    (Test Results) using 2×3 and k×3 contingency tables. Under H₀ of variable independence, all
+    test statistics failed to reach the α = 0.05 threshold — providing no evidence of association
+    between any clinical, administrative, or demographic variable and test outcome.
+  </p>
+
+  <table>
+    <tr><th>Variable</th><th>Chi² Statistic</th><th>df</th><th>p-value</th><th>Decision</th></tr>
+    <tr><td>Gender</td><td>2.185</td><td>2</td><td>0.335</td><td>Fail to reject H₀</td></tr>
+    <tr><td>Blood Type</td><td>8.002</td><td>14</td><td>0.889</td><td>Fail to reject H₀</td></tr>
+    <tr><td>Medical Condition</td><td>13.272</td><td>10</td><td>0.209</td><td>Fail to reject H₀</td></tr>
+    <tr><td>Admission Type</td><td>1.648</td><td>4</td><td>0.800</td><td>Fail to reject H₀</td></tr>
+    <tr><td>Insurance Provider</td><td>9.035</td><td>8</td><td>0.339</td><td>Fail to reject H₀</td></tr>
+    <tr><td>Medication</td><td>3.852</td><td>8</td><td>0.870</td><td>Fail to reject H₀</td></tr>
+  </table>
+
+  <div class="phase-title">Kruskal-Wallis Non-Parametric ANOVA</div>
+  <p>
+    Kruskal-Wallis tests assessed distributional equality of billing amount and LOS across categorical
+    groupings, without assuming normality. A single borderline result emerged: billing amount differs
+    marginally across medical conditions (H = 11.17, p = 0.048). Given the near-identical group means
+    observed in EDA and the large sample size (n = 54,966), this result is interpreted as a high-power
+    detection of a statistically trivial difference — a canonical Type I sensitivity artefact in large-N settings.
+  </p>
+
+  <div class="phase-title">Odds Ratios with 95% Confidence Intervals</div>
+  <p>
+    Odds ratios were estimated for each medical condition as an exposure variable against the binary
+    outcome of Abnormal test result (vs. all others), using standard 2×2 contingency-based estimation
+    with Woolf confidence intervals. Effect sizes were uniformly negligible, with all ORs within 6%
+    of the null value (OR = 1.0).
+  </p>
+
+  <table>
+    <tr><th>Medical Condition</th><th>Odds Ratio</th><th>95% CI</th><th>Interpretation</th></tr>
+    <tr><td>Arthritis</td><td>1.038</td><td>(0.990 – 1.088)</td><td>No effect</td></tr>
+    <tr><td>Diabetes</td><td>1.023</td><td>(0.976 – 1.073)</td><td>No effect</td></tr>
+    <tr><td>Obesity</td><td>1.021</td><td>(0.974 – 1.071)</td><td>No effect</td></tr>
+    <tr><td>Cancer</td><td>1.014</td><td>(0.967 – 1.063)</td><td>No effect</td></tr>
+    <tr><td>Asthma</td><td>0.959</td><td>(0.914 – 1.006)</td><td>No effect</td></tr>
+    <tr><td><strong>Hypertension</strong></td><td><strong>0.947</strong></td><td><strong>(0.903 – 0.993)</strong></td><td><strong>Stat. sig., negligible effect</strong></td></tr>
+  </table>
+
+  <div class="highlight">
+    <strong>Statistical vs. Clinical Significance:</strong> Hypertension reaches p &lt; 0.05
+    (OR = 0.947, CI excludes 1.0), yet represents a 5.3% reduction in odds — clinically inert.
+    This exemplifies how large sample sizes can generate statistically significant findings with
+    no practical meaning. Effect size assessment (here, proximity to OR = 1.0) is essential
+    alongside p-value interpretation.
+  </div>
+
+  <!-- PHASE 4 -->
+  <div class="section-title">Phase 4 — Survival Analysis</div>
+  <p>
+    Length of Stay was framed as a time-to-event outcome with discharge as the terminal event.
+    With all 54,966 observations observed to discharge (zero censoring), both non-parametric
+    and semi-parametric approaches were applied.
+  </p>
+
+  <div class="phase-title">Kaplan-Meier Estimation</div>
+
+  <div class="chart-grid">
+    <div>
+      <img src="./assets/chart_km_admission.png" alt="KM by Admission Type" />
+      <p class="chart-caption">KM survival function by admission type — complete curve overlap</p>
+    </div>
+    <div>
+      <img src="./assets/chart_km_condition.png" alt="KM by Medical Condition" />
+      <p class="chart-caption">KM survival function by medical condition — no stratification effect</p>
+    </div>
+  </div>
+
+  <p>
+    Non-parametric KM survival functions were estimated for strata defined by admission type
+    (Emergency, Urgent, Elective) and medical condition. The characteristic linear decline — the
+    signature of an underlying uniform LOS distribution — is observed uniformly across all strata,
+    with survival curves showing complete overlap and no log-rank separation. In real clinical data,
+    Emergency admissions would exhibit markedly different survival profiles from Elective cases,
+    driven by acuity, treatment complexity, and care pathway differences.
+  </p>
+
+  <div class="phase-title">Cox Proportional Hazards Model</div>
+  <p>
+    A multivariate Cox PH model was fitted with all available patient-level covariates (18 terms
+    after dummy encoding) to estimate covariate-adjusted hazard ratios for discharge. Model
+    diagnostics confirmed proportional hazards assumption compliance.
+  </p>
+
+  <div class="highlight">
+    <strong>Concordance = 0.506</strong> — the model's discriminative capacity is statistically
+    indistinguishable from random assignment (C = 0.5). All estimated hazard ratios fall within
+    1–2% of 1.0, and the log-likelihood ratio test (χ² = 24.48, df = 18, p = 0.14) confirms
+    collectively negligible predictive power. No covariate is a meaningful predictor of LOS.
+  </div>
+
+  <!-- PHASE 5 -->
+  <div class="section-title">Phase 5 — Multi-Class Predictive Modelling</div>
+  <p>
+    Feature engineering produced 27 binary and continuous predictors via one-hot encoding of
+    categorical variables (drop-first encoding to prevent multicollinearity) and StandardScaler
+    normalisation. A stratified 80/20 train-test split was applied to preserve class proportions
+    across partitions (training: n = 43,972; test: n = 10,994).
+  </p>
+  <p>
+    Three classifiers spanning the complexity spectrum — Logistic Regression (convex linear baseline),
+    XGBoost (gradient-boosted trees), and Random Forest (bagged ensemble) — were trained and
+    evaluated on the held-out test set using macro-averaged F1 and one-vs-rest ROC-AUC to account
+    for multi-class structure.
+  </p>
+
+  <table>
+    <tr><th>Model</th><th>Macro F1</th><th>ROC-AUC (OvR)</th><th>vs. Random Baseline</th></tr>
+    <tr><td>Logistic Regression</td><td>0.330</td><td>0.496</td><td>At chance</td></tr>
+    <tr><td>XGBoost</td><td>0.370</td><td>0.545</td><td>+0.04 F1 above chance</td></tr>
+    <tr><td><strong>Random Forest</strong></td><td><strong>0.430</strong></td><td><strong>0.629</strong></td><td><strong>+0.10 F1 above chance</strong></td></tr>
+  </table>
+
+  <div class="chart-grid">
+    <div>
+      <img src="./assets/chart_confusion.png" alt="Confusion Matrix" />
+      <p class="chart-caption">Confusion matrix (Random Forest) — errors uniformly distributed across off-diagonal cells</p>
+    </div>
+    <div>
+      <img src="./assets/chart_shap.png" alt="SHAP Feature Importance" />
+      <p class="chart-caption">SHAP mean |value| — near-uniform importance with no dominant clinical predictor</p>
+    </div>
+  </div>
+
+  <p>
+    Random Forest achieved the strongest performance (F1 = 0.43; AUC = 0.629), attributable
+    to its capacity to exploit weak additive signals across high-dimensional feature interactions
+    through bootstrap aggregation — even in the absence of individually predictive features.
+    Logistic Regression, constrained to linear decision boundaries, performs at the random
+    chance baseline (F1 = 0.33 for a balanced tri-class problem; AUC = 0.50), confirming the
+    complete absence of linear separability in the feature space.
+  </p>
+
+  <div class="insight-box">
+    <strong>SHAP Analysis:</strong> Room number ranked as the highest-importance feature
+    (mean |SHAP| ≈ 0.035) — an administrative identifier carrying no clinical information.
+    This is the definitive evidence of noise-fitting: when an arbitrary administrative variable
+    drives model predictions, the model has learned spurious correlations rather than
+    generalizable clinical signal. All SHAP values are uniformly low (~0.010–0.035),
+    with no feature exhibiting directional dominance across any class.
+  </div>
+
+  <!-- PHASE 6 -->
+  <div class="section-title">Phase 6 — Unsupervised Patient Stratification</div>
+  <p>
+    K-Means clustering (k = 4, selected via elbow method on inertia; n_init = 10 for centroid
+    stability) was applied to the full standardised feature matrix. The elbow curve exhibited a
+    gradual monotonic decline with no identifiable inflection — a characteristic profile of
+    datasets lacking latent cluster structure, where partitioning is driven by spatial geometry
+    rather than natural data manifolds.
+  </p>
+  <p>
+    UMAP dimensionality reduction (n_components = 2, n_neighbors = 15) was applied to a
+    stratified 5,000-record subsample to visualise the cluster topology in low-dimensional space.
+  </p>
+
+  <img src="./assets/chart_umap.png" alt="UMAP Patient Clusters" class="chart-img" />
+  <p class="chart-caption">UMAP 2D embedding coloured by K-Means cluster assignment — complete inter-cluster intermixing confirms absence of natural patient subgroups</p>
+
+  <p>
+    Cluster profile analysis confirms statistical indistinguishability across all four partitions:
+    mean age within 0.1 years, billing within $500, and LOS within 0.3 days across clusters.
+    Categorical mode profiles differ only in ways consistent with random sampling variation.
+    K-Means is partitioning the feature space arbitrarily rather than recovering clinically
+    meaningful patient archetypes.
+  </p>
+
+  <table>
+    <tr><th>Cluster</th><th>Mean Age (yrs)</th><th>Mean Billing ($)</th><th>Mean LOS (days)</th></tr>
+    <tr><td>0</td><td>51.60</td><td>25,636</td><td>15.68</td></tr>
+    <tr><td>1</td><td>51.58</td><td>25,662</td><td>15.43</td></tr>
+    <tr><td>2</td><td>51.54</td><td>25,155</td><td>15.50</td></tr>
+    <tr><td>3</td><td>51.50</td><td>25,608</td><td>15.46</td></tr>
+  </table>
+
+  <!-- NOTEBOOK CTA -->
+  <div class="notebook-cta">
+    <div>
+      <h3>Full Analysis Notebook</h3>
+      <p>The complete Jupyter notebook includes all code, executed outputs, interactive Plotly charts,<br>and phase-by-phase written interpretations — ready to run in any Python environment.</p>
+    </div>
+    <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+      <a class="btn-dl" href="https://raw.githubusercontent.com/bensoncyril123/healthcare-dashboard/main/notebooks/healthcare_eda.ipynb" download="healthcare_eda.ipynb">⬇ Download Notebook</a>
+      <a class="btn-dl" style="background:#2e6fcf;" href="https://nbviewer.org/github/bensoncyril123/healthcare-dashboard/blob/main/notebooks/healthcare_eda.ipynb" target="_blank">👁 View Online</a>
+    </div>
+  </div>
+
+  <!-- CONCLUSION -->
+  <div class="conclusion-box">
+    <h3>Overall Conclusion & Analytical Significance</h3>
+    <p>
+      Across six analytical phases and multiple independent methodologies — chi-square inference,
+      non-parametric ANOVA, odds ratio estimation, Kaplan-Meier survival analysis, Cox proportional
+      hazards regression, multi-class gradient-boosted classification, SHAP explainability, and
+      K-Means patient stratification — the results converge on a single, coherent conclusion:
+      this dataset contains no embedded real-world clinical signal. All variables were generated
+      independently during synthetic data construction, with no inter-variable relationships encoded.
+    </p>
+    <p style="margin-top: 0.75rem;">The analytical significance of this finding is threefold:</p>
+    <ul>
+      <li><strong>Pipeline integrity:</strong> The framework correctly identifies the absence of signal across all phases — a null result achieved through rigorous methodology, not analytical failure.</li>
+      <li><strong>Statistical maturity:</strong> Borderline p-values (billing: p = 0.048; Hypertension OR p &lt; 0.05) were correctly contextualised through effect size analysis rather than mechanical significance thresholding.</li>
+      <li><strong>Transferability:</strong> Applied to a real EHR dataset (e.g. MIMIC-IV, UK Biobank), this pipeline would be expected to yield Cox concordance > 0.70, classification F1 > 0.70, and clinically interpretable patient clusters — the infrastructure is production-ready.</li>
+    </ul>
+  </div>
+
+  <div style="margin-top: 2rem;">
+    <a class="back-btn" href="index.html">← Back to Portfolio</a>
+  </div>
+
+  <div class="author">
+    Analysis by <strong>Cyril Benson Nana Boakye</strong> &nbsp;·&nbsp; Data Scientist & Biostatistician
+  </div>
+
+</div>
+</body>
+</html>
