@@ -133,6 +133,13 @@ nav {
   justify-content: space-around;
   align-items: center;
   height: 17vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .nav-links {
@@ -264,6 +271,7 @@ section {
 /* PROFILE SECTION */
 
 #profile {
+  padding-top: 17vh;
   display: flex;
   justify-content: center;
   align-items: center;
