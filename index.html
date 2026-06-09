@@ -29,14 +29,19 @@
           <span></span>
           <span></span>
         </div>
-        <div class="menu-links">
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Skills</a></li>
-          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-        </div>
       </div>
     </nav>
+
+    <!-- FULL SCREEN OVERLAY MENU -->
+    <div class="overlay-menu" id="overlayMenu">
+      <div class="overlay-close" onclick="toggleMenu()">&#10005;</div>
+      <ul class="overlay-links">
+        <li><a href="#about" onclick="toggleMenu()">About</a></li>
+        <li><a href="#experience" onclick="toggleMenu()">Skills</a></li>
+        <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+        <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+      </ul>
+    </div>
     <section id="profile">
       <div class="section__pic-container">
         <img src="./assets/profile-pic-cyril.png" alt="Cyril Nana Boakye Benson profile picture" />

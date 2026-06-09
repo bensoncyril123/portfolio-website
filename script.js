@@ -1,8 +1,9 @@
 function toggleMenu() {
-  const menu = document.querySelector(".menu-links");
+  const overlay = document.getElementById("overlayMenu");
   const icon = document.querySelector(".hamburger-icon");
-  menu.classList.toggle("open");
+  overlay.classList.toggle("open");
   icon.classList.toggle("open");
+  document.body.classList.toggle("no-scroll");
 }
 
 // ── SCROLL FADE-IN ──
