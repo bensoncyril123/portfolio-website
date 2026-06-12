@@ -164,7 +164,30 @@
       <h1 class="title">Projects</h1>
       <div class="experience-details-container">
         <div class="projects-wrapper" style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: flex-start; align-items: stretch;">
-    
+
+          <div class="about-containers">
+            <div class="details-container color-container">
+              <h2 class="experience-sub-title project-title" style="text-align: left;">
+                Diabetes Risk Prediction: End-to-End ML Pipeline with SHAP-Explained LightGBM &amp; Interactive Dashboard
+              </h2>
+              <div class="article-container">
+                <img src="./assets/diabetes/dashboard_overview.png" alt="Diabetes Risk Dashboard" class="project-img diabetes-img" />
+              </div>
+              <p style="text-align: justify; padding: 0 1rem; font-size: 0.72rem;">
+                End-to-end machine learning project on the CDC's BRFSS 2015 Health Indicators dataset (253,680 respondents, 22 features).
+                Covers exploratory data analysis with formal effect-size testing (Cramér's V, epsilon-squared), engineered features
+                (BMI category, Lifestyle Score, Comorbidity Score), and a five-model comparison (Logistic Regression, Random Forest,
+                HistGradientBoosting, XGBoost, LightGBM) addressing severe 84/2/14 class imbalance via class-weighted training.
+                The tuned LightGBM model (Balanced Accuracy 0.525, Macro ROC-AUC 0.775 on the held-out test set) is explained with
+                SHAP and deployed as a live, interactive Streamlit risk-screening dashboard with a real-time predictor.
+              </p>
+              <div class="btn-container" style="text-align: center;">
+                <button class="btn btn-color-2 project-btn" onclick="window.open('./assets/Diabetes_Risk_Project.html', '_blank')">View Project</button>
+                <button class="btn btn-color-2 project-btn" onclick="window.open('https://bensoncyril123-diabetes-dashboard-dashboardapp-i5lrtb.streamlit.app/', '_blank')">Live Dashboard</button>
+              </div>
+            </div>
+          </div>
+
           <div class="about-containers">
             <div class="details-container color-container">
               <h2 class="experience-sub-title project-title" style="text-align: left;">
