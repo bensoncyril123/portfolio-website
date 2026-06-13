@@ -215,7 +215,22 @@
     .stat-card .num{ font-size:1.2rem; }
     .stat-card .label{ font-size:0.68rem; }
     .btn{ font-size:0.82rem; padding:0.65rem 1.2rem; }
-    .toc-links a{ font-size:0.78rem; }
+
+    /* Nav: stack brand above a horizontally scrollable pill tab bar instead of wrapping */
+    .topnav-inner{ flex-direction:column; align-items:flex-start; gap:0.65rem; padding:0.8rem 1.5rem; }
+    .toc-links{
+      width:100%; flex-wrap:nowrap; gap:0.5rem;
+      overflow-x:auto; scroll-snap-type:x proximity; padding-bottom:0.15rem;
+      -ms-overflow-style:none; scrollbar-width:none;
+    }
+    .toc-links::-webkit-scrollbar{ display:none; }
+    .toc-links li{ flex:none; scroll-snap-align:start; }
+    .toc-links a{
+      display:inline-block; padding:0.35rem 0.85rem; border-radius:999px;
+      background:var(--card-2); white-space:nowrap; font-size:0.76rem;
+    }
+    .toc-links a:hover{ background:rgba(99,102,241,0.14); color:var(--accent-light); }
+
     h2.section-title{ font-size:1.45rem; }
     h3.sub-title{ font-size:1.05rem; }
     .lead, .prose{ font-size:0.82rem; }
