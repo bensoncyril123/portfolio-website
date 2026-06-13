@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Diabetes Risk Prediction — Case Study | Cyril Benson</title>
+<title>Diabetes Risk Prediction: Case Study | Cyril Benson</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -228,8 +228,8 @@
     <p class="eyebrow">Data Science Case Study</p>
     <h1>Diabetes Risk Prediction</h1>
     <p class="subtitle">
-      An end-to-end machine learning pipeline on the CDC's BRFSS 2015 Health Indicators dataset —
-      from exploratory data analysis and feature engineering to a tuned LightGBM model with
+      An end-to-end machine learning pipeline on the CDC's BRFSS 2015 Health Indicators dataset, from
+      exploratory data analysis and feature engineering to a tuned LightGBM model with
       SHAP-based explainability, deployed as an interactive risk-screening dashboard.
     </p>
     <div class="badges">
@@ -264,7 +264,7 @@
           The <strong>Behavioral Risk Factor Surveillance System (BRFSS)</strong> is the CDC's annual
           telephone survey of U.S. residents on health behaviors, chronic conditions, and preventive
           service use. The 2015 cleaned release used here contains <strong>253,680 respondents</strong>
-          and <strong>22 health indicators</strong> &mdash; a mix of binary lifestyle/medical-history
+          and <strong>22 health indicators</strong>: a mix of binary lifestyle/medical-history
           flags, ordinal self-reported scales, and a handful of continuous/count variables.
         </p>
         <p class="prose">
@@ -272,7 +272,7 @@
           <strong>Prediabetes</strong>, or <strong>Diabetes</strong> (including borderline diabetes).
           The goal of this project is to understand which lifestyle and health factors are most
           strongly associated with diabetes status, engineer features that sharpen that signal, and
-          train a model that can serve as a <strong>population-level risk-screening tool</strong> &mdash;
+          train a model that can serve as a <strong>population-level risk-screening tool</strong>,
           flagging higher-risk individuals for follow-up clinical testing rather than diagnosing them outright.
         </p>
 
@@ -283,16 +283,16 @@
             <tbody>
               <tr><td>Respondents</td><td>253,680</td></tr>
               <tr><td>Health indicators</td><td>22 (1 continuous, 2 count, 19 binary/ordinal)</td></tr>
-              <tr><td>Missing values</td><td>0 &mdash; fully complete</td></tr>
-              <tr><td>Duplicate rows</td><td>9.4% (~23,899) &mdash; plausible for a categorical survey; retained for EDA</td></tr>
-              <tr><td>Target</td><td><code>Diabetes_012</code> &mdash; 3-class (No Diabetes / Prediabetes / Diabetes)</td></tr>
+              <tr><td>Missing values</td><td>0, fully complete</td></tr>
+              <tr><td>Duplicate rows</td><td>9.4% (~23,899), plausible for a categorical survey; retained for EDA</td></tr>
+              <tr><td>Target</td><td><code>Diabetes_012</code>, 3-class (No Diabetes / Prediabetes / Diabetes)</td></tr>
             </tbody>
           </table>
         </div>
 
         <div class="table-wrap">
           <table>
-            <caption>Target Distribution &mdash; Severe Class Imbalance</caption>
+            <caption>Target Distribution: Severe Class Imbalance</caption>
             <thead><tr><th>Class</th><th>Count</th><th>Share</th></tr></thead>
             <tbody>
               <tr><td>No Diabetes</td><td class="num">213,703</td><td class="num">84.2%</td></tr>
@@ -305,7 +305,7 @@
         <div class="callout warn">
           <strong>Why this matters:</strong> the Prediabetes class is <strong>~46&times; smaller</strong> than
           the No-Diabetes class. A model that always predicts &ldquo;No Diabetes&rdquo; scores
-          <strong>84.2% accuracy</strong> while being completely useless &mdash; so every model in this
+          <strong>84.2% accuracy</strong> while being completely useless, so every model in this
           project is evaluated on <strong>macro-F1</strong>, <strong>balanced accuracy</strong>, and
           <strong>macro ROC-AUC</strong>, with class/sample weighting applied throughout.
         </div>
@@ -319,22 +319,22 @@
         <h2 class="section-title">Exploratory Data Analysis</h2>
         <p class="lead">
           Eleven sections of EDA establish the dataset's shape, quantify the class imbalance, and rank
-          every feature's univariate association with diabetes status &mdash; first visually, then with
+          every feature's univariate association with diabetes status, first visually, then with
           formal statistical tests (chi-square / Cramér's V for categorical features, Kruskal-Wallis /
           epsilon-squared for continuous ones).
         </p>
 
-        <h3 class="sub-title"><span class="num">2.1</span>Target Variable &mdash; Severe Class Imbalance</h3>
+        <h3 class="sub-title"><span class="num">2.1</span>Target Variable: Severe Class Imbalance</h3>
         <p class="prose">
           <code>Diabetes_012</code>: <strong>0</strong> = No Diabetes, <strong>1</strong> = Prediabetes,
           <strong>2</strong> = Diabetes. Roughly <strong>84% of respondents have no diabetes</strong>,
           <strong>~2% are prediabetic</strong>, and <strong>~14% have diabetes</strong>. The Prediabetes
-          class is especially rare and becomes a central challenge for modeling &mdash; addressed later
+          class is especially rare and becomes a central challenge for modeling, addressed later
           via class weighting and macro-averaged metrics.
         </p>
         <div class="figure">
           <img src="diabetes/01_target_distribution.png" alt="Target distribution of Diabetes_012">
-          <figcaption>Fig. 2.1 &mdash; Distribution of the three-class target variable across all 253,680 respondents.</figcaption>
+          <figcaption>Fig. 2.1: Distribution of the three-class target variable across all 253,680 respondents.</figcaption>
         </div>
 
         <h3 class="sub-title"><span class="num">2.2</span>Numeric Feature Distributions</h3>
@@ -344,47 +344,47 @@
         </p>
         <div class="callout">
           <strong>Observation:</strong> <code>BMI</code> shows a clear rightward shift for the Diabetes
-          group &mdash; higher BMI is strongly associated with diabetes/prediabetes. <code>MentHlth</code>
+          group: higher BMI is strongly associated with diabetes/prediabetes. <code>MentHlth</code>
           and <code>PhysHlth</code> are heavily right-skewed (most respondents report 0 bad days), but
           the Diabetes group has a noticeably heavier tail, indicating more reported unhealthy days.
         </div>
         <div class="figure">
           <img src="diabetes/02_numeric_distributions.png" alt="Numeric feature distributions by diabetes status">
-          <figcaption>Fig. 2.2 &mdash; BMI, MentHlth, and PhysHlth distributions split by diabetes status.</figcaption>
+          <figcaption>Fig. 2.2: BMI, MentHlth, and PhysHlth distributions split by diabetes status.</figcaption>
         </div>
 
         <h3 class="sub-title"><span class="num">2.3</span>Age as a Risk Factor</h3>
         <p class="prose">
-          <code>Age</code> is coded in 13 brackets (1 = 18&ndash;24 &hellip; 13 = 80+). Diabetes prevalence
+          <code>Age</code> is coded in 13 brackets (1 = 18-24 &hellip; 13 = 80+). Diabetes prevalence
           climbs steadily with age.
         </p>
         <div class="callout">
-          <strong>Observation:</strong> prevalence rises from <strong>under 5%</strong> in the 18&ndash;24
+          <strong>Observation:</strong> prevalence rises from <strong>under 5%</strong> in the 18-24
           bracket to roughly <strong>a quarter of respondents aged 60+</strong>. Prediabetes follows a similar
           but much smaller trend. Age is one of the strongest non-modifiable risk factors in this dataset.
         </div>
         <div class="figure">
           <img src="diabetes/03_age_vs_diabetes.png" alt="Diabetes prevalence by age group">
-          <figcaption>Fig. 2.3 &mdash; Diabetes prevalence across 13 age brackets.</figcaption>
+          <figcaption>Fig. 2.3: Diabetes prevalence across 13 age brackets.</figcaption>
         </div>
 
         <h3 class="sub-title"><span class="num">2.4</span>Binary Health Indicators</h3>
         <p class="prose">
           For each binary feature (1 = Yes / 0 = No), we compute the proportion of &ldquo;Yes&rdquo;
-          responses within each diabetes class &mdash; a direct view of how strongly each
+          responses within each diabetes class, a direct view of how strongly each
           lifestyle/health factor co-occurs with diabetes status.
         </p>
         <div class="callout">
           <strong>Observation:</strong> <code>HighBP</code>, <code>HighChol</code>, <code>DiffWalk</code>
           (difficulty walking), and <code>HeartDiseaseorAttack</code> show the largest gaps between the
-          No-Diabetes and Diabetes groups &mdash; all roughly <strong>2&times; more prevalent</strong> among
+          No-Diabetes and Diabetes groups, all roughly <strong>2&times; more prevalent</strong> among
           diabetics. Protective behaviors like <code>PhysActivity</code>, <code>Fruits</code>, and
           <code>Veggies</code> are modestly <em>less</em> common in the Diabetes group. <code>Sex</code> and
           <code>AnyHealthcare</code> show little difference across groups.
         </div>
         <div class="figure">
           <img src="diabetes/04_binary_features_by_target.png" alt="Binary health indicators by diabetes status">
-          <figcaption>Fig. 2.4 &mdash; Prevalence of binary health/lifestyle indicators by diabetes status.</figcaption>
+          <figcaption>Fig. 2.4: Prevalence of binary health/lifestyle indicators by diabetes status.</figcaption>
         </div>
 
         <h3 class="sub-title"><span class="num">2.5</span>General Health, Education &amp; Income</h3>
@@ -393,7 +393,7 @@
           and <code>Income</code> are socioeconomic indicators.
         </p>
         <div class="callout">
-          <strong>Observation:</strong> <code>GenHlth</code> shows the strongest gradient of all three &mdash;
+          <strong>Observation:</strong> <code>GenHlth</code> shows the strongest gradient of all three:
           among respondents reporting &ldquo;Poor&rdquo; general health, <strong>over 35%</strong> have
           diabetes, vs. <strong>under 5%</strong> for &ldquo;Excellent&rdquo;. Education and income show
           milder but consistent gradients: lower brackets show higher diabetes prevalence, reflecting
@@ -401,32 +401,32 @@
         </div>
         <div class="figure">
           <img src="diabetes/05_ordinal_features_vs_target.png" alt="Ordinal features vs diabetes status">
-          <figcaption>Fig. 2.5 &mdash; Diabetes status breakdown across General Health, Education, and Income brackets.</figcaption>
+          <figcaption>Fig. 2.5: Diabetes status breakdown across General Health, Education, and Income brackets.</figcaption>
         </div>
 
         <h3 class="sub-title"><span class="num">2.6</span>BMI Categories</h3>
         <p class="prose">
-          Standard WHO BMI bands: Underweight (&lt;18.5), Normal (18.5&ndash;25), Overweight (25&ndash;30), Obese (30+).
+          Standard WHO BMI bands: Underweight (&lt;18.5), Normal (18.5-25), Overweight (25-30), Obese (30+).
         </p>
         <div class="callout">
-          <strong>Observation:</strong> diabetes prevalence rises sharply with BMI category &mdash; from
+          <strong>Observation:</strong> diabetes prevalence rises sharply with BMI category, from
           <strong>~5%</strong> in Underweight/Normal to <strong>20%+</strong> in Obese. Most respondents
           fall into Overweight or Obese categories, underscoring BMI as one of the most actionable risk factors.
         </div>
         <div class="figure">
           <img src="diabetes/06_bmi_category_vs_target.png" alt="BMI category vs diabetes status">
-          <figcaption>Fig. 2.6 &mdash; Diabetes status by WHO BMI category.</figcaption>
+          <figcaption>Fig. 2.6: Diabetes status by WHO BMI category.</figcaption>
         </div>
 
         <h3 class="sub-title"><span class="num">2.7</span>Correlation Structure</h3>
         <div class="figure-grid">
           <div class="figure">
             <img src="diabetes/07_correlation_heatmap.png" alt="Correlation heatmap of all features">
-            <figcaption>Fig. 2.7a &mdash; Full feature correlation heatmap.</figcaption>
+            <figcaption>Fig. 2.7a: Full feature correlation heatmap.</figcaption>
           </div>
           <div class="figure">
             <img src="diabetes/08_target_correlations.png" alt="Feature correlations with the target">
-            <figcaption>Fig. 2.7b &mdash; Each feature's correlation with <code>Diabetes_012</code>.</figcaption>
+            <figcaption>Fig. 2.7b: Each feature's correlation with <code>Diabetes_012</code>.</figcaption>
           </div>
         </div>
         <div class="callout">
@@ -435,7 +435,7 @@
           diabetes status, while <code>PhysActivity</code>, <code>Education</code>, and <code>Income</code>
           show the strongest negative (protective) correlations. No pair of features exceeds <strong>|r| = 0.7</strong>,
           so regularized linear models and tree ensembles can both use the full feature set without major
-          multicollinearity concerns &mdash; though <code>GenHlth</code> / <code>PhysHlth</code> /
+          multicollinearity concerns, though <code>GenHlth</code> / <code>PhysHlth</code> /
           <code>DiffWalk</code> are moderately related (all reflect overall health).
         </div>
 
@@ -445,12 +445,12 @@
           nominal/ordinal. To rigorously rank risk factors, we run a <strong>chi-square test of independence
           + Cramér's V</strong> for categorical/ordinal features, and a <strong>Kruskal-Wallis H-test +
           epsilon-squared</strong> for the continuous/count features. With n &asymp; 253,680, p-values are
-          vanishingly small for almost everything &mdash; so we focus on <strong>effect size</strong> to
+          vanishingly small for almost everything, so we focus on <strong>effect size</strong> to
           judge practical importance.
         </p>
         <div class="figure">
           <img src="diabetes/09_effect_sizes.png" alt="Effect sizes (Cramér's V / epsilon-squared) ranking">
-          <figcaption>Fig. 2.8 &mdash; Features ranked by Cramér's V / epsilon-squared effect size.</figcaption>
+          <figcaption>Fig. 2.8: Features ranked by Cramér's V / epsilon-squared effect size.</figcaption>
         </div>
         <div class="table-wrap">
           <table>
@@ -462,17 +462,17 @@
               <tr><td>3</td><td><code>GenHlth</code></td><td class="num">0.219</td><td>"Poor" self-rated health &rarr; 35%+ diabetes prevalence vs &lt;5% for "Excellent"</td></tr>
               <tr><td>4</td><td><code>HighChol</code></td><td class="num">0.211</td><td>High cholesterol ~30 pts more prevalent in diabetics</td></tr>
               <tr><td>5</td><td><code>HeartDiseaseorAttack</code></td><td class="num">0.180</td><td>3&times; more common in diabetics (22% vs 7%)</td></tr>
-              <tr><td>6</td><td><code>Age</code></td><td class="num">0.138</td><td>Prevalence rises from &lt;5% (18&ndash;24) to ~25% (60+)</td></tr>
+              <tr><td>6</td><td><code>Age</code></td><td class="num">0.138</td><td>Prevalence rises from &lt;5% (18-24) to ~25% (60+)</td></tr>
               <tr><td>7</td><td><code>Income</code></td><td class="num">0.124</td><td>Lower income brackets show higher prevalence (socioeconomic gradient)</td></tr>
-              <tr><td>8</td><td><code>PhysActivity</code></td><td class="num">0.122</td><td>Protective &mdash; less common among diabetics (63% vs 78%)</td></tr>
+              <tr><td>8</td><td><code>PhysActivity</code></td><td class="num">0.122</td><td>Protective: less common among diabetics (63% vs 78%)</td></tr>
               <tr><td>9</td><td><code>Stroke</code></td><td class="num">0.107</td><td>~3&times; more common in diabetics (9.2% vs 3.2%)</td></tr>
               <tr><td>10</td><td><code>Education</code></td><td class="num">0.095</td><td>Lower education brackets show higher prevalence</td></tr>
             </tbody>
           </table>
         </div>
         <div class="callout">
-          <code>BMI</code> ranks lower on this particular scale (epsilon-squared &asymp; 0.056, #15 overall)
-          &mdash; Cramér's V and epsilon-squared aren't perfectly comparable across test types, and BMI's
+          <code>BMI</code> ranks lower on this particular scale (epsilon-squared &asymp; 0.056, #15 overall),
+          Cramér's V and epsilon-squared aren't perfectly comparable across test types, and BMI's
           <em>practical</em> signal remains strong: median BMI rises <strong>27 &rarr; 30 &rarr; 31</strong>
           across No Diabetes &rarr; Prediabetes &rarr; Diabetes, and the Obese category shows
           <strong>23.4%</strong> diabetes prevalence vs ~5% for Normal/Underweight.
@@ -480,16 +480,16 @@
 
         <h3 class="sub-title"><span class="num">2.9</span>Executive Summary</h3>
         <p class="prose">
-          A single combined view of the headline EDA findings &mdash; dataset quality, target distribution,
-          top risk factors, and modeling implications &mdash; reused throughout the dashboard and this report.
+          A single combined view of the headline EDA findings (dataset quality, target distribution,
+          top risk factors, and modeling implications) that is reused throughout the dashboard and this report.
         </p>
         <div class="figure">
           <img src="diabetes/10_executive_summary.png" alt="EDA executive summary infographic">
-          <figcaption>Fig. 2.9 &mdash; Executive summary of EDA findings.</figcaption>
+          <figcaption>Fig. 2.9: Executive summary of EDA findings.</figcaption>
         </div>
         <ul class="bullets">
-          <li><strong>Highest-risk segments:</strong> Obese, age 60+, Poor self-rated health, difficulty walking, existing HighBP/HighChol/HeartDisease &mdash; 25&ndash;40% diabetes prevalence.</li>
-          <li><strong>Lowest-risk segments:</strong> Normal/Underweight BMI, age 18&ndash;24, Excellent self-rated health, physically active &mdash; under 5% diabetes prevalence.</li>
+          <li><strong>Highest-risk segments:</strong> Obese, age 60+, Poor self-rated health, difficulty walking, existing HighBP/HighChol/HeartDisease: 25-40% diabetes prevalence.</li>
+          <li><strong>Lowest-risk segments:</strong> Normal/Underweight BMI, age 18-24, Excellent self-rated health, physically active: under 5% diabetes prevalence.</li>
           <li><strong>Modeling implications:</strong> imbalance handling is critical (class weighting / SMOTE), stratified splits, and priority features for engineering: <code>HighBP</code>, <code>DiffWalk</code>, <code>GenHlth</code>, <code>HighChol</code>, <code>HeartDiseaseorAttack</code>, <code>Age</code>, <code>BMI</code>, <code>Income</code>.</li>
         </ul>
       </div>
@@ -502,7 +502,7 @@
         <h2 class="section-title">Feature Engineering</h2>
         <p class="lead">
           Building on the EDA findings, a small set of derived features was engineered and validated to
-          sharpen the signal available to the models &mdash; without inflating dimensionality or introducing
+          sharpen the signal available to the models, without inflating dimensionality or introducing
           leakage. All transformations live in <code>src/features.py</code> so the dashboard's live
           predictor applies the exact same pipeline as training.
         </p>
@@ -510,7 +510,7 @@
         <h3 class="sub-title"><span class="num">3.1</span>BMI Outlier Capping</h3>
         <p class="prose">
           The EDA showed <code>BMI</code> ranging from 12 to 98, with the 99.5th percentile at 55. Values
-          are capped at <strong>Q3 + 3&times;IQR (&asymp; 52)</strong> &mdash; the standard "extreme outlier"
+          are capped at <strong>Q3 + 3&times;IQR (&asymp; 52)</strong>, the standard "extreme outlier"
           convention. This affects only <strong>~0.7% of rows</strong> and tames a handful of likely
           data-entry extremes (BMI &gt; 70) without touching the genuinely informative obese range.
         </p>
@@ -521,7 +521,7 @@
           2 = Overweight, 3 = Obese</strong>.
         </p>
 
-        <h3 class="sub-title"><span class="num">3.3</span>Lifestyle Score (0&ndash;5)</h3>
+        <h3 class="sub-title"><span class="num">3.3</span>Lifestyle Score (0-5)</h3>
         <p class="prose">
           A composite score: <strong>+1</strong> each for <code>PhysActivity</code>, <code>Fruits</code>,
           <code>Veggies</code> (present), and <strong>+1</strong> each for <em>not</em> <code>Smoker</code>
@@ -529,35 +529,35 @@
         </p>
         <div class="callout">
           <strong>Observation:</strong> from score 1 to 5, diabetes prevalence decreases monotonically
-          (<strong>20.4% &rarr; 19.3% &rarr; 16.9% &rarr; 13.4% &rarr; 9.1%</strong>) &mdash; a clean gradient.
+          (<strong>20.4% &rarr; 19.3% &rarr; 16.9% &rarr; 13.4% &rarr; 9.1%</strong>), a clean gradient.
           Score 0 (9.4%) breaks the pattern, but this group is tiny (489 respondents, 0.2% of data) and by
-          definition 100% heavy-alcohol consumers &mdash; and <code>HvyAlcoholConsump</code> itself showed a
+          definition 100% heavy-alcohol consumers, and <code>HvyAlcoholConsump</code> itself showed a
           <em>negative</em> correlation with diabetes in the EDA (likely an age/selection confound: heavy
           drinkers in this survey skew younger). The composite score is informative for the bulk of the
-          population (scores 1&ndash;5), but the extreme score-0 group reflects a small, confounded subgroup
+          population (scores 1-5), but the extreme score-0 group reflects a small, confounded subgroup
           rather than "very unhealthy = very high risk".
         </div>
 
-        <h3 class="sub-title"><span class="num">3.4</span>Comorbidity Score (0&ndash;4)</h3>
+        <h3 class="sub-title"><span class="num">3.4</span>Comorbidity Score (0-4)</h3>
         <p class="prose">
           A count of <code>HighBP</code>, <code>HighChol</code>, <code>Stroke</code>, and
-          <code>HeartDiseaseorAttack</code> &mdash; the four features with the strongest chi-square effect
-          sizes (rank #1, #4, #9, #5 in the EDA) &mdash; summarizing overlapping cardiovascular risk signals
+          <code>HeartDiseaseorAttack</code>, the four features with the strongest chi-square effect
+          sizes (rank #1, #4, #9, #5 in the EDA), summarizing overlapping cardiovascular risk signals
           into a single ordinal feature.
         </p>
         <div class="callout good">
-          <strong>Result:</strong> a much cleaner gradient &mdash; diabetes prevalence rises from
+          <strong>Result:</strong> a much cleaner gradient: diabetes prevalence rises from
           <strong>3.7%</strong> (0 comorbidities) to <strong>47.4%</strong> (all 4 conditions present),
           monotonically across all 5 levels. With <strong>r = 0.32</strong>, <code>ComorbidityScore</code>
           <strong>outranks every original feature</strong>, including <code>GenHlth</code> (0.30) and
-          <code>HighBP</code> (0.27) &mdash; the single best linear predictor in the dataset.
+          <code>HighBP</code> (0.27), the single best linear predictor in the dataset.
         </div>
 
         <h3 class="sub-title"><span class="num">3.5</span>Stratified Train / Validation / Test Split</h3>
         <p class="prose">
           Split <strong>70% train / 15% validation / 15% test</strong>, stratified on
-          <code>Diabetes_012</code> to preserve the 84.2% / 1.8% / 13.9% class ratio in every split &mdash;
-          critical given the severe imbalance.
+          <code>Diabetes_012</code> to preserve the 84.2% / 1.8% / 13.9% class ratio in every split,
+          which is critical given the severe imbalance.
         </p>
 
         <div class="table-wrap">
@@ -567,9 +567,9 @@
             <tbody>
               <tr><td>BMI capping</td><td>1,707 rows (0.67%) capped at 52</td></tr>
               <tr><td><code>BMICategory</code></td><td>4-level ordinal, r = 0.22 with target</td></tr>
-              <tr><td><code>LifestyleScore</code></td><td>0&ndash;5 composite, r = &minus;0.10 (non-monotonic at extreme 0, confounded by HvyAlcoholConsump)</td></tr>
-              <tr class="highlight"><td><code>ComorbidityScore</code></td><td>0&ndash;4 composite, r = 0.32 &mdash; strongest single feature in the dataset</td></tr>
-              <tr><td>Train / Val / Test</td><td>177,576 / 38,052 / 38,052 rows &mdash; class ratios preserved exactly</td></tr>
+              <tr><td><code>LifestyleScore</code></td><td>0-5 composite, r = &minus;0.10 (non-monotonic at extreme 0, confounded by HvyAlcoholConsump)</td></tr>
+              <tr class="highlight"><td><code>ComorbidityScore</code></td><td>0-4 composite, r = 0.32, strongest single feature in the dataset</td></tr>
+              <tr><td>Train / Val / Test</td><td>177,576 / 38,052 / 38,052 rows, class ratios preserved exactly</td></tr>
               <tr><td>Output</td><td><code>data/processed/{train,val,test,diabetes_engineered}.csv</code></td></tr>
             </tbody>
           </table>
@@ -583,16 +583,16 @@
         <p class="section-tag">04 &middot; Predictive Modeling</p>
         <h2 class="section-title">Predictive Modeling</h2>
         <p class="lead">
-          Five model families &mdash; a dummy baseline, a linear model, a bagged-tree ensemble, and two
-          gradient-boosting variants &mdash; were trained and compared, with the strongest candidate then
+          Five model families (a dummy baseline, a linear model, a bagged-tree ensemble, and two
+          gradient-boosting variants) were trained and compared, with the strongest candidate then
           hyperparameter-tuned and explained with SHAP.
         </p>
 
         <h3 class="sub-title"><span class="num">4.1</span>Baseline &amp; Class Imbalance Strategy</h3>
         <p class="prose">
           A <code>DummyClassifier</code> that always predicts the majority class ("No Diabetes") sets the
-          floor: <strong>84.2% accuracy with zero ability to detect diabetes or prediabetes</strong> &mdash;
-          0.0 macro-F1 for both minority classes. Every real model must beat this on macro-F1 and balanced
+          floor: <strong>84.2% accuracy with zero ability to detect diabetes or prediabetes</strong>
+          (0.0 macro-F1 for both minority classes). Every real model must beat this on macro-F1 and balanced
           accuracy, not just accuracy.
         </p>
         <p class="prose">
@@ -610,10 +610,10 @@
         <h3 class="sub-title"><span class="num">4.2</span>Model Comparison (Validation Set)</h3>
         <div class="table-wrap">
           <table>
-            <caption>Validation Results &mdash; All Models</caption>
+            <caption>Validation Results: All Models</caption>
             <thead><tr><th>Model</th><th>Accuracy</th><th>Balanced Acc.</th><th>Macro F1</th><th>Macro Precision</th><th>Macro Recall</th><th>Macro ROC-AUC</th></tr></thead>
             <tbody>
-              <tr><td>Dummy (Most Frequent)</td><td class="num">0.842</td><td class="num">0.333</td><td class="num">0.305</td><td class="num">0.281</td><td class="num">0.333</td><td class="num">&ndash;</td></tr>
+              <tr><td>Dummy (Most Frequent)</td><td class="num">0.842</td><td class="num">0.333</td><td class="num">0.305</td><td class="num">0.281</td><td class="num">0.333</td><td class="num">N/A</td></tr>
               <tr><td>Logistic Regression</td><td class="num">0.642</td><td class="num">0.528</td><td class="num">0.428</td><td class="num">0.448</td><td class="num">0.528</td><td class="num">0.777</td></tr>
               <tr><td>Random Forest</td><td class="num">0.713</td><td class="num">0.501</td><td class="num">0.433</td><td class="num">0.429</td><td class="num">0.501</td><td class="num">0.761</td></tr>
               <tr><td>HistGradientBoosting</td><td class="num">0.625</td><td class="num">0.518</td><td class="num">0.420</td><td class="num">0.444</td><td class="num">0.518</td><td class="num">0.771</td></tr>
@@ -625,16 +625,16 @@
         </div>
         <div class="figure">
           <img src="diabetes/11_model_comparison.png" alt="Model comparison chart across metrics">
-          <figcaption>Fig. 4.2 &mdash; Imbalance-aware metrics (left) vs. raw accuracy (right) for all six model families.</figcaption>
+          <figcaption>Fig. 4.2: Imbalance-aware metrics (left) vs. raw accuracy (right) for all six model families.</figcaption>
         </div>
         <div class="callout">
-          <strong>Observation:</strong> the right panel above is a cautionary tale &mdash; the Dummy
+          <strong>Observation:</strong> the right panel above is a cautionary tale: the Dummy
           classifier's 84.2% "accuracy" looks competitive with real models on raw accuracy alone, yet it's
           useless (0 recall on Diabetes/Prediabetes). On the imbalance-aware metrics, <strong>Logistic
           Regression leads on Balanced Accuracy and ROC-AUC</strong>, while <strong>Random Forest leads on
-          Macro-F1</strong> &mdash; but RF's Prediabetes recall collapses to <strong>0.05</strong> (vs. 0.33
+          Macro-F1</strong>, but RF's Prediabetes recall collapses to <strong>0.05</strong> (vs. 0.33
           for LR), since <code>class_weight='balanced'</code> is applied per bootstrap sample and Prediabetes
-          is only 1.8% of the data. All tree ensembles trail Logistic Regression on ROC-AUC &mdash; somewhat
+          is only 1.8% of the data. All tree ensembles trail Logistic Regression on ROC-AUC, somewhat
           unusual, and the motivation for hyperparameter tuning below.
         </div>
 
@@ -646,7 +646,7 @@
         </p>
         <div class="table-wrap">
           <table>
-            <caption>Effect of Tuning &mdash; Validation Set</caption>
+            <caption>Effect of Tuning: Validation Set</caption>
             <thead><tr><th>Metric</th><th>LR (baseline)</th><th>LightGBM (untuned)</th><th>LightGBM (tuned)</th><th>Random Forest</th></tr></thead>
             <tbody>
               <tr><td>Balanced Accuracy</td><td class="num">0.5278</td><td class="num">0.4979</td><td class="num"><strong>0.5288 &#9650;</strong></td><td class="num">0.5014</td></tr>
@@ -662,19 +662,19 @@
           <code>reg_lambda=0.1</code>.
         </p>
         <div class="callout good">
-          <strong>Tuning closed the gap</strong> &mdash; tuned LightGBM pushed Balanced Accuracy
+          <strong>Tuning closed the gap:</strong> tuned LightGBM pushed Balanced Accuracy
           <em>past</em> Logistic Regression (0.5288 vs 0.5278) and its ROC-AUC to within 0.0001 of LR's,
           essentially a tie at the top on both imbalance-aware ranking metrics. Random Forest still edges
           out everyone on Macro F1, but its Prediabetes recall was only <strong>0.05</strong>; tuned
-          LightGBM's Prediabetes recall is <strong>0.32</strong> &mdash; a far more usable trade-off for a
+          LightGBM's Prediabetes recall is <strong>0.32</strong>, a far more usable trade-off for a
           <em>risk-screening</em> tool, where missing at-risk people is the costly error.
         </div>
         <div class="callout">
           <strong>On the "ceiling" question:</strong> three very different model families (linear, bagged
-          trees, boosted trees) all converge to <strong>~0.50&ndash;0.53 balanced accuracy</strong> and
-          <strong>~0.74&ndash;0.78 ROC-AUC</strong>. This strongly suggests the limiting factor is
-          <strong>information content in the 22 BRFSS features</strong>, not model capacity &mdash;
-          consistent with the modest effect sizes found in the EDA (Cramér's V &le; 0.27). The
+          trees, boosted trees) all converge to <strong>~0.50-0.53 balanced accuracy</strong> and
+          <strong>~0.74-0.78 ROC-AUC</strong>. This strongly suggests the limiting factor is
+          <strong>information content in the 22 BRFSS features</strong>, not model capacity, consistent
+          with the modest effect sizes found in the EDA (Cramér's V &le; 0.27). The
           <strong>tuned LightGBM</strong> was selected as the final model: it ties Logistic Regression on
           imbalance-aware metrics while offering no feature-scaling requirement, native multiclass
           probability calibration, and tree-based SHAP explanations.
@@ -688,7 +688,7 @@
         </p>
         <div class="table-wrap">
           <table>
-            <caption>Final Model &mdash; Held-Out Test Set</caption>
+            <caption>Final Model: Held-Out Test Set</caption>
             <thead><tr><th>Metric</th><th>Value</th></tr></thead>
             <tbody>
               <tr><td>Accuracy</td><td class="num">0.628</td></tr>
@@ -706,18 +706,18 @@
         <h3 class="sub-title"><span class="num">4.5</span>Feature Importance (SHAP)</h3>
         <p class="prose">
           SHAP (SHapley Additive exPlanations) values quantify each feature's contribution to individual
-          predictions, giving a model-agnostic, theoretically grounded measure of importance &mdash; and
-          power the dashboard's "Model Insights" tab. <code>TreeExplainer</code> was run on a random sample
+          predictions, giving a model-agnostic, theoretically grounded measure of importance that also
+          powers the dashboard's "Model Insights" tab. <code>TreeExplainer</code> was run on a random sample
           of the test set, averaging mean |SHAP| across all 3 classes.
         </p>
         <div class="figure-grid">
           <div class="figure">
             <img src="diabetes/12_shap_importance_bar.png" alt="SHAP global feature importance bar chart">
-            <figcaption>Fig. 4.5a &mdash; Global feature importance by mean |SHAP value|.</figcaption>
+            <figcaption>Fig. 4.5a: Global feature importance by mean |SHAP value|.</figcaption>
           </div>
           <div class="figure">
             <img src="diabetes/12_shap_beeswarm_diabetes.png" alt="SHAP beeswarm plot for Diabetes class">
-            <figcaption>Fig. 4.5b &mdash; SHAP beeswarm for the "Diabetes" class.</figcaption>
+            <figcaption>Fig. 4.5b: SHAP beeswarm for the "Diabetes" class.</figcaption>
           </div>
         </div>
         <div class="table-wrap">
@@ -740,10 +740,10 @@
         </div>
         <ul class="bullets">
           <li><strong>GenHlth (self-reported general health) is the single strongest predictor</strong> by a wide margin. The beeswarm shows a clean pattern: higher GenHlth values (1 = Excellent &rarr; 5 = Poor) push predictions firmly toward "Diabetes". It ranked #3 in the EDA's Cramér's V, but is clearly #1 once feature <em>interactions</em> are accounted for.</li>
-          <li><strong>The engineered <code>ComorbidityScore</code> (rank #3) outranks every one of its individual components</strong> (HighBP #5, HighChol #7; Stroke and HeartDiseaseorAttack don't make the top 10) &mdash; validating the feature engineering work. The model extracts more signal from the <em>aggregated</em> comorbidity count than from any single condition.</li>
-          <li><strong><code>HighBP</code> dropped from #1 (univariate Cramér's V = 0.272) to #5</strong>, and <strong><code>DiffWalk</code> dropped from #2 to #10</strong> &mdash; the classic effect of correlated features in a multivariate model: once <code>GenHlth</code> and <code>ComorbidityScore</code> "claim" the shared signal, these features' marginal contribution shrinks even though their univariate association is large.</li>
-          <li><strong><code>BMI</code> (raw, #4) outranks <code>BMICategory</code> (binned, #8)</strong> &mdash; the model benefits from the finer granularity of the continuous value over the 4-bucket WHO category.</li>
-          <li><strong><code>Income</code> (#6)</strong> carries real predictive signal independent of clinical/behavioral variables &mdash; consistent with the EDA's income-stratified prevalence pattern.</li>
+          <li><strong>The engineered <code>ComorbidityScore</code> (rank #3) outranks every one of its individual components</strong> (HighBP #5, HighChol #7; Stroke and HeartDiseaseorAttack don't make the top 10), validating the feature engineering work. The model extracts more signal from the <em>aggregated</em> comorbidity count than from any single condition.</li>
+          <li><strong><code>HighBP</code> dropped from #1 (univariate Cramér's V = 0.272) to #5</strong>, and <strong><code>DiffWalk</code> dropped from #2 to #10</strong>, the classic effect of correlated features in a multivariate model: once <code>GenHlth</code> and <code>ComorbidityScore</code> "claim" the shared signal, these features' marginal contribution shrinks even though their univariate association is large.</li>
+          <li><strong><code>BMI</code> (raw, #4) outranks <code>BMICategory</code> (binned, #8)</strong>: the model benefits from the finer granularity of the continuous value over the 4-bucket WHO category.</li>
+          <li><strong><code>Income</code> (#6)</strong> carries real predictive signal independent of clinical/behavioral variables, consistent with the EDA's income-stratified prevalence pattern.</li>
         </ul>
       </div>
     </section>
@@ -756,18 +756,18 @@
 
         <h3 class="sub-title"><span class="num">5.1</span>What We Learned</h3>
         <ol class="steps">
-          <li><strong>A real but bounded signal.</strong> Six very different models &mdash; a dummy baseline, a linear model, a bagged-tree ensemble, and three gradient-boosting variants &mdash; all converge to <strong>Balanced Accuracy &asymp; 0.50&ndash;0.53</strong> and <strong>ROC-AUC &asymp; 0.74&ndash;0.78</strong>. This "ceiling" mirrors the modest effect sizes found in the EDA (max Cramér's V = 0.272 for HighBP) &mdash; the 21 BRFSS lifestyle/comorbidity questions carry real signal, but nowhere near enough to <em>diagnose</em> diabetes. They're proxies for risk, not measurements of disease.</li>
-          <li><strong>Feature engineering paid off.</strong> The engineered <code>ComorbidityScore</code> (SHAP rank #3) outranks every one of its individual components (HighBP #5, HighChol #7) &mdash; the aggregated count of pre-existing conditions is more predictive than any single condition alone. <code>BMICategory</code> and the capped <code>BMI</code> both made the top 8.</li>
-          <li><strong>Class imbalance handling matters more than algorithm choice.</strong> <code>class_weight</code> / <code>sample_weight = 'balanced'</code> was essential &mdash; without it, every model collapses to predicting "No Diabetes" for almost everything. Random Forest with balancing still nearly failed on Prediabetes (recall 0.05); tuned LightGBM reached 0.32.</li>
-          <li><strong>Hyperparameter tuning closed the gap with Logistic Regression</strong> &mdash; tuned LightGBM (Balanced Acc 0.529, ROC-AUC 0.777 on validation) essentially tied LR (0.528 / 0.777), while offering far better minority-class recall than Random Forest and native SHAP support.</li>
-          <li><strong>GenHlth (self-reported general health) is the dominant predictor</strong> (SHAP rank #1, more than 1.5&times; the next feature), followed by Age and ComorbidityScore &mdash; all clinically sensible.</li>
+          <li><strong>A real but bounded signal.</strong> Six very different models (a dummy baseline, a linear model, a bagged-tree ensemble, and three gradient-boosting variants) all converge to <strong>Balanced Accuracy &asymp; 0.50-0.53</strong> and <strong>ROC-AUC &asymp; 0.74-0.78</strong>. This "ceiling" mirrors the modest effect sizes found in the EDA (max Cramér's V = 0.272 for HighBP): the 21 BRFSS lifestyle/comorbidity questions carry real signal, but nowhere near enough to <em>diagnose</em> diabetes. They're proxies for risk, not measurements of disease.</li>
+          <li><strong>Feature engineering paid off.</strong> The engineered <code>ComorbidityScore</code> (SHAP rank #3) outranks every one of its individual components (HighBP #5, HighChol #7): the aggregated count of pre-existing conditions is more predictive than any single condition alone. <code>BMICategory</code> and the capped <code>BMI</code> both made the top 8.</li>
+          <li><strong>Class imbalance handling matters more than algorithm choice.</strong> <code>class_weight</code> / <code>sample_weight = 'balanced'</code> was essential: without it, every model collapses to predicting "No Diabetes" for almost everything. Random Forest with balancing still nearly failed on Prediabetes (recall 0.05); tuned LightGBM reached 0.32.</li>
+          <li><strong>Hyperparameter tuning closed the gap with Logistic Regression:</strong> tuned LightGBM (Balanced Acc 0.529, ROC-AUC 0.777 on validation) essentially tied LR (0.528 / 0.777), while offering far better minority-class recall than Random Forest and native SHAP support.</li>
+          <li><strong>GenHlth (self-reported general health) is the dominant predictor</strong> (SHAP rank #1, more than 1.5&times; the next feature), followed by Age and ComorbidityScore, all clinically sensible.</li>
         </ol>
 
         <h3 class="sub-title"><span class="num">5.2</span>Limitations &amp; Honest Framing</h3>
         <ul class="bullets">
-          <li><strong>Macro F1 (0.42) and Prediabetes recall (0.32) remain low.</strong> This model is suitable as a population-level <strong>risk-screening / triage tool</strong> (flagging people for follow-up testing) &mdash; <em>not</em> a diagnostic tool. A "Diabetes" prediction should prompt an HbA1c / fasting-glucose test, not a diagnosis.</li>
-          <li>The dataset is <strong>self-reported survey data</strong> (BRFSS) &mdash; no lab values (HbA1c, fasting glucose), no family history, no medication data. These would likely be far more predictive than any model tuning.</li>
-          <li><strong>9.4% duplicate rows</strong> (documented in the EDA) reflect the limited combinatorial space of categorical survey responses, not data quality issues &mdash; but they mean some "unique individuals" may be over- or under-represented proportionally across train/val/test splits.</li>
+          <li><strong>Macro F1 (0.42) and Prediabetes recall (0.32) remain low.</strong> This model is suitable as a population-level <strong>risk-screening / triage tool</strong> (flagging people for follow-up testing), <em>not</em> a diagnostic tool. A "Diabetes" prediction should prompt an HbA1c / fasting-glucose test, not a diagnosis.</li>
+          <li>The dataset is <strong>self-reported survey data</strong> (BRFSS), with no lab values (HbA1c, fasting glucose), no family history, and no medication data. These would likely be far more predictive than any model tuning.</li>
+          <li><strong>9.4% duplicate rows</strong> (documented in the EDA) reflect the limited combinatorial space of categorical survey responses, not data quality issues, but they mean some "unique individuals" may be over- or under-represented proportionally across train/val/test splits.</li>
         </ul>
 
         <h3 class="sub-title"><span class="num">5.3</span>From Notebook to Product</h3>
@@ -776,10 +776,10 @@
           interactive <strong>Streamlit dashboard</strong> with four tabs:
         </p>
         <ul class="bullets">
-          <li><strong>Overview</strong> &mdash; dataset stats, target distribution, and the executive-summary figure.</li>
-          <li><strong>Interactive EDA</strong> &mdash; Plotly-based filters by age, sex, and BMI category to explore feature/target relationships live.</li>
-          <li><strong>Risk Predictor</strong> &mdash; a short health/lifestyle form runs the exact same <code>src/features.py</code> pipeline used in training, then returns a predicted class with probability breakdown.</li>
-          <li><strong>Model Insights</strong> &mdash; the model comparison table, SHAP global importance, confusion matrix, and classification report shown above.</li>
+          <li><strong>Overview</strong>: dataset stats, target distribution, and the executive-summary figure.</li>
+          <li><strong>Interactive EDA</strong>: Plotly-based filters by age, sex, and BMI category to explore feature/target relationships live.</li>
+          <li><strong>Risk Predictor</strong>: a short health/lifestyle form runs the exact same <code>src/features.py</code> pipeline used in training, then returns a predicted class with probability breakdown.</li>
+          <li><strong>Model Insights</strong>: the model comparison table, SHAP global importance, confusion matrix, and classification report shown above.</li>
         </ul>
       </div>
     </section>
@@ -790,14 +790,14 @@
         <p class="section-tag">06 &middot; Interactive Demo</p>
         <h2 class="section-title">Try the Live Dashboard</h2>
         <p class="lead">
-          Everything above &mdash; the EDA, the engineered features, and the tuned LightGBM model &mdash;
+          Everything above (the EDA, the engineered features, and the tuned LightGBM model)
           is wired into a live, interactive Streamlit app embedded directly below. Fill in the
           <strong>Risk Predictor</strong> tab with a sample health profile to see a real-time prediction
           and probability breakdown.
         </p>
 
         <div class="dashboard-note">
-          <span>Running live on Streamlit Community Cloud &mdash; first load may take a few seconds to wake up.</span>
+          <span>Running live on Streamlit Community Cloud, first load may take a few seconds to wake up.</span>
           <a class="btn btn-primary" href="https://bensoncyril123-diabetes-dashboard-dashboardapp-i5lrtb.streamlit.app/" target="_blank">Open in New Tab &#8599;</a>
         </div>
 
@@ -809,11 +809,11 @@
         <div class="figure-grid">
           <div class="figure">
             <img src="diabetes/dashboard_overview.png" alt="Dashboard Overview tab screenshot">
-            <figcaption>Overview tab &mdash; dataset summary, target distribution, key risk factors.</figcaption>
+            <figcaption>Overview tab: dataset summary, target distribution, key risk factors.</figcaption>
           </div>
           <div class="figure">
             <img src="diabetes/dashboard_predictor.png" alt="Dashboard Risk Predictor tab screenshot">
-            <figcaption>Risk Predictor tab &mdash; live diabetes-risk estimate from a short health &amp; lifestyle form.</figcaption>
+            <figcaption>Risk Predictor tab: live diabetes-risk estimate from a short health &amp; lifestyle form.</figcaption>
           </div>
         </div>
       </div>
@@ -837,7 +837,7 @@
         <div class="links-grid">
           <a class="link-card" href="https://github.com/bensoncyril123/diabetes-risk-prediction" target="_blank">
             <div class="lc-title">diabetes-risk-prediction &#8599;</div>
-            <div class="lc-desc">Full analysis repo &mdash; notebooks (EDA, feature engineering, modeling), source code, models, and figures.</div>
+            <div class="lc-desc">Full analysis repo: notebooks (EDA, feature engineering, modeling), source code, models, and figures.</div>
           </a>
           <a class="link-card" href="https://github.com/bensoncyril123/diabetes-dashboard" target="_blank">
             <div class="lc-title">diabetes-dashboard &#8599;</div>
