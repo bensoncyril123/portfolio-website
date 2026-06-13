@@ -931,5 +931,22 @@
       schedule();
     })();
   </script>
+  <script>
+    // When a nav pill is tapped, scroll the pill bar so later pills
+    // (e.g. Results, Dashboard after Modeling) come into view too.
+    (function(){
+      const toc = document.querySelector('.toc-links');
+      if (!toc) return;
+      toc.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth > 800) return;
+          const li = link.closest('li');
+          const tocRect = toc.getBoundingClientRect();
+          const liRect = li.getBoundingClientRect();
+          toc.scrollBy({ left: liRect.left - tocRect.left, behavior: 'smooth' });
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
