@@ -899,5 +899,32 @@
     &copy; <span id="year"></span> Cyril Benson &middot; <a href="../index.html">Back to portfolio</a>
   </footer>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    // Periodic "peek" nudge to hint the mobile nav scrolls horizontally.
+    // Stops once the reader scrolls it themselves, or after a few tries.
+    (function(){
+      const toc = document.querySelector('.toc-links');
+      if (!toc) return;
+      if (window.innerWidth > 800) return;
+      if (toc.scrollWidth <= toc.clientWidth) return;
+
+      let userScrolled = false;
+      toc.addEventListener('scroll', () => { userScrolled = true; }, { passive: true });
+
+      let peeks = 0;
+      const maxPeeks = 3;
+      function schedule(){
+        if (userScrolled || peeks >= maxPeeks) return;
+        setTimeout(() => {
+          if (userScrolled) return;
+          toc.scrollTo({ left: 56, behavior: 'smooth' });
+          setTimeout(() => toc.scrollTo({ left: 0, behavior: 'smooth' }), 500);
+          peeks++;
+          schedule();
+        }, peeks === 0 ? 700 : 7000);
+      }
+      schedule();
+    })();
+  </script>
 </body>
 </html>
