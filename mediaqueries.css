@@ -1,7 +1,7 @@
 @media screen and (max-width: 1400px) {
   #profile {
-    height: 83vh;
-    margin-bottom: 6rem;
+    min-height: 100vh;
+    margin-bottom: 0;
   }
   .about-containers {
     flex-wrap: wrap;
@@ -28,6 +28,9 @@
   #profile,
   .section-container {
     display: block;
+  }
+  #profile {
+    min-height: 0;
   }
   .arrow {
     display: none;
