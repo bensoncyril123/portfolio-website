@@ -456,8 +456,9 @@ section {
 
 .arrow {
   position: absolute;
-  right: -5rem;
-  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 1.5rem;
 }
 
 .details-container {
