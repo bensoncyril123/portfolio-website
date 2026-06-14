@@ -194,15 +194,9 @@
                 <img src="./assets/healthcare-analytics.png" alt="Healthcare Analytics" class="project-img healthcare-img" />
               </div>
               <p style="text-align: justify; padding: 0 1rem; font-size: 0.72rem;">
-                A production-grade clinical analytics framework applied to 54,966 synthetic patient records across six rigorous phases.
-                Phase 1 covers systematic data provenance and feature engineering, including detection and correction of 534 duplicate records
-                and 108 erroneous billing entries, with engineered Length of Stay as a time-to-event variable.
-                Phase 2 delivers multi-dimensional EDA across demographics, clinical patterns, financial metrics, and operational performance using interactive Plotly visualisations.
-                Phase 3 applies chi-square tests of independence, Kruskal-Wallis non-parametric ANOVA, and odds ratio estimation with 95% confidence intervals to interrogate clinical associations.
-                Phase 4 fits Kaplan-Meier survival functions and a multivariate Cox Proportional Hazards model (concordance = 0.506) to model time-to-discharge.
-                Phase 5 trains and evaluates Logistic Regression, XGBoost, and Random Forest classifiers for tri-class test result prediction
-                (best: Random Forest, Macro F1 = 0.43, ROC-AUC = 0.629), with SHAP explainability for feature attribution.
-                Phase 6 applies K-Means clustering and UMAP dimensionality reduction for unsupervised patient stratification.
+                Built a production-grade clinical analytics framework applied to 54,966 synthetic patient records across a six-phase pipeline. The process began with rigorous data provenance work &mdash; detecting and correcting 534 duplicate records and 108 erroneous billing entries, and engineering Length of Stay as a time-to-event variable &mdash; followed by multi-dimensional exploratory analysis across demographics, clinical patterns, financials, and operational performance using interactive Plotly visualisations.
+                Biostatistical inference &mdash; chi-square tests of independence, Kruskal-Wallis ANOVA, and odds ratios with 95% confidence intervals &mdash; was used to interrogate clinical associations, while Kaplan-Meier survival functions and a multivariate Cox Proportional Hazards model (concordance = 0.506) characterised time-to-discharge.
+                Logistic Regression, XGBoost, and Random Forest classifiers were trained and compared for tri-class test result prediction, with the best model (Random Forest, Macro F1 = 0.43, ROC-AUC = 0.629) explained via SHAP, before the pipeline concludes with K-Means clustering and UMAP dimensionality reduction for unsupervised patient segmentation.
               </p>
               <div class="btn-container" style="text-align: center;">
                 <button class="btn btn-color-2 project-btn" onclick="window.open('./healthcare.html', '_blank')">
