@@ -302,11 +302,12 @@ section {
 
 #profile {
   padding-top: 80px;
+  padding-bottom: 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5rem;
-  height: 80vh;
+  height: auto;
 }
 
 .section__pic-container {
