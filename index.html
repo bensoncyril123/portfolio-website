@@ -215,17 +215,9 @@
                 <img src="./assets/pic03.jpg" alt="Air Quality Analysis" class="project-img ipf-img" />
               </div>
               <p style="text-align: justify; padding: 0 1rem; font-size: 0.72rem;">
-                This project applies supervised classification methods to predict 
-                disease progression in Idiopathic Pulmonary Fibrosis (IPF) 
-                using clinical and high-dimensional proteomic data from 60 patients. 
-                The binary outcome is modeled under two regimes: a low-dimensional 
-                setting with 14 selected covariates and a high-dimensional setting with 1,129 features. 
-                In the low-dimensional phase, logistic regression, decision trees, and random forests are compared. 
-                Random forests outperform others, achieving 83.3% test accuracy and AUC of 0.984. In the high-dimensional phase,
-                 LASSO logistic regression and random forests are applied. LASSO performs poorly (AUC ≈ 0.51), 
-                 while random forests yield better results (accuracy = 61.1%, AUC = 0.57), 
-                 though performance degrades due to limited sample size and weak signal.
-                  Models are evaluated using cross-validation and standard classification metrics.
+                Applied a two-phase supervised learning framework to predict disease progression in Idiopathic Pulmonary Fibrosis (IPF) using clinical and high-dimensional proteomic data from 60 patients monitored over 80 weeks, of whom 58% progressed.
+                In a low-dimensional setting using 14 curated covariates &mdash; including six proteomic biomarkers linked to IPF progression &mdash; Decision Tree, Random Forest, and Logistic Regression classifiers were trained on a stratified 70/30 split with 10-fold cross-validation, tuned via out-of-bag error and GVIF diagnostics; Random Forest performed best, reaching 83.3% accuracy, 100% sensitivity, and an AUC of 0.984.
+                In a high-dimensional setting using the full 1,129-covariate proteomic profile, LASSO logistic regression and Random Forest were compared through regularisation and ensemble tuning; Random Forest again outperformed (61.1% accuracy, F1 = 0.842, AUC = 0.569), though both models' limited generalisation highlighted the trade-off between model flexibility and statistical power when predictors vastly outnumber observations.
               </p>
               <div class="btn-container" style="text-align: center;">
                 <button class="btn btn-color-2 project-btn" onclick="window.open('./assets/Final_Written_Report__Masters.pdf', '_blank')">
@@ -239,19 +231,15 @@
           <div class="about-containers">
             <div class="details-container color-container">
               <h2 class="experience-sub-title project-title" style="text-align: left;">
-                Survival Analysis of Treatment Efficacy in Primary Biliary Cirrhosis
+                Survival Analysis of Cyclosporin A Treatment Efficacy in Primary Biliary Cirrhosis: Kaplan-Meier, Cox Proportional Hazards &amp; Weibull AFT Modeling
               </h2>
               <div class="article-container">
                 <img src="./assets/project-8.png" alt="Anime Rec System" class="project-img biliary-img" />
               </div>
               <p style="text-align: justify; padding: 0 1rem; font-size: 0.72rem;">
-                This study evaluates survival outcomes in Primary Biliary Cirrhosis (PBC) patients using the PBC3 dataset to assess 
-                the efficacy of Cyclosporin A (CyA) treatment. Kaplan-Meier analysis, conducted in SAS, revealed no significant 
-                difference in survival between treatment and placebo groups, but disease stage, sex, and bilirubin levels were
-                 critical predictors. The Cox Proportional Hazards model and Weibull Accelerated Failure Time (AFT) model, also 
-                 implemented in SAS, confirmed that advanced disease stages, higher bilirubin, and lower albumin levels significantly 
-                 reduced survival time, while treatment with CyA showed limited impact. Diagnostic checks validated the model assumptions, 
-                 highlighting the importance of robust statistical methods in SAS to guide clinical decision-making for PBC management.
+                Analysed survival outcomes for 349 patients in the PBC3 multi-centre randomised trial to assess whether Cyclosporin A (CyA) reduces the risk of treatment failure &mdash; death or liver transplant &mdash; in Primary Biliary Cirrhosis, with all modelling carried out in SAS.
+                Kaplan-Meier estimation found no significant survival difference between CyA and placebo (p = 0.78), but revealed disease stage, sex, and gastrointestinal bleeding history as strong univariate prognostic factors (p &lt; 0.0001, p = 0.006, and p &lt; 0.05 respectively).
+                A multivariate Cox Proportional Hazards model (global p &lt; 0.0001) identified sex, bilirubin, albumin, and disease stage as significant predictors of survival, while a Weibull Accelerated Failure Time model corroborated these findings and additionally flagged aspartate transaminase and treatment as significant accelerants of time-to-failure; residual diagnostics confirmed both models' assumptions were well met, aside from a proportional-hazards violation for stage 1.
               </p>
               <div class="btn-container" style="text-align: center;">
                 <button class="btn btn-color-2 project-btn" onclick="window.open('./assets/Survival_Analysis__Primary_Biliary_Cirrhosis.pdf', '_blank')">View Project</button>
