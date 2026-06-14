@@ -295,7 +295,7 @@
           <img src="./assets/pic04.jpg" alt="Air Quality Analysis" class="project-img titanic-img" />
         </div>
         <p style="text-align: justify; padding: 0 1rem; font-size: 0.72rem;">
-          Implemented logistic regression from first principles via Iteratively Reweighted Least Squares (IRLS) to model Titanic survival as a function of sex, age, class, and fare, reaching 80.0% classification accuracy after convergence in 6 iterations.
+          Implemented logistic regression from first principles via Iteratively Reweighted Least Squares (IRLS), derived from the Newton-Raphson optimisation algorithm, to model Titanic survival as a function of sex, age, class, and fare from the Kaggle Titanic dataset, reaching 80.0% classification accuracy after convergence in just 6 iterations.
           The fitted coefficients confirmed that being female (&beta; = 2.61) and travelling in a higher class (&beta; = -1.15 for lower class) were the strongest predictors of survival, while age and fare had smaller effects.
           Monte Carlo simulation of 10,000 synthetic passengers estimated a baseline survival probability of 44.9%, rising only marginally to 45.3% under a hypothetical 95% lifeboat-capacity scenario; applying variance-reduction techniques &mdash; stratified sampling, antithetic variates, and control variates &mdash; refined this estimate to as high as 50.1%, with antithetic variates proving most effective at reducing simulation variance.
         </p>
@@ -314,7 +314,7 @@
           <img src="./assets/project-7.png" alt="Modeling FSW Distribution" class="project-img hiv-img" />
         </div>
         <p style="text-align: justify; padding: 0 1rem; font-size: 0.72rem;">
-          Modeled the spatial distribution of Female Sex Workers (FSWs) across five sub-Saharan African countries &mdash; Mozambique, Malawi, Zimbabwe, Zambia, and Botswana &mdash; using 675 survey transects, combining environmental covariates (population density, urbanisation, temperature, rainfall, night-time light) with sociological factors (HIV prevalence, crime, insect-net use, wealth index, age at first sexual experience).
+          Modeled the spatial distribution of Female Sex Workers (FSWs) across five sub-Saharan African countries &mdash; Mozambique, Malawi, Zimbabwe, Zambia, and Botswana &mdash; using 675 survey transects, combining environmental covariates (population density, urbanisation, temperature, rainfall, night-time light) with sociological factors (HIV prevalence, crime, and insect-net use).
           After diagnosing overdispersion in an initial Poisson model, a negative binomial mixed-effects model with random intercepts for country, region, year, and month, and an offset for survey area, provided the best fit (AIC = 2863.2).
           The final model identified population density, urbanisation, temperature, high local crime, and insect-net usage as significant predictors of FSW counts, with substantial unexplained variability attributable to country- and region-level random effects &mdash; insights intended to guide the geographic targeting of HIV-prevention interventions.
         </p>
@@ -346,13 +346,13 @@
     <div class="about-containers">
       <div class="details-container color-container">
         <h2 class="experience-sub-title project-title" style="text-align: left;">
-          Predicting Gene Expression Specificity in Maize Pollen
+          Predicting Gene Expression Specificity in Maize Pollen Using Genomic Sequence Features and Machine Learning
         </h2>
         <div class="article-container">
           <img src="./assets/pie.png" alt="Modeling FSW Distribution" class="project-img gene-img" />
         </div>
         <p style="text-align: justify; padding: 0 1rem; font-size: 0.72rem;">
-          Developed a binary classifier to predict whether a maize gene is expressed specifically in pollen using only genomic sequence-derived features &mdash; bypassing the cost of transcriptomic or proteomic profiling &mdash; across 12,725 genes and 2,626 candidate features sourced from MaizeGDB.
+          Developed a binary classifier to predict whether a maize gene is expressed specifically in pollen using only genomic sequence-derived features &mdash; bypassing the cost of transcriptomic or proteomic profiling &mdash; across 12,725 genes and 2,626 candidate features sourced from MaizeGDB, with pollen-specificity playing a key role in crop fertility and yield.
           After filtering low-variance and highly correlated features, PCA and t-SNE revealed limited natural separation between pollen-specific and non-specific genes, motivating a supervised approach: a LASSO-regularised logistic regression retained 336 informative sequence features.
           The final model achieved an AUROC of 0.744 on held-out data &mdash; meaningfully better than chance, with high specificity but lower sensitivity &mdash; and feature-weight analysis flagged enriched sequence motifs, including the 3-mer ATC, as candidate cis-regulatory elements worth exploring in future pollen-specificity research.
         </p>
@@ -384,7 +384,7 @@
     <div class="about-containers">
       <div class="details-container color-container">
         <h2 class="experience-sub-title project-title" style="text-align: left;">
-          Climate Change Remains Top Global Threat Across 19‑Country Survey
+          Climate Change Remains the Top Perceived Global Threat: A Cross-National Survey Analysis Across 19 Countries
         </h2>
         <div class="article-container">
           <img src="./assets/pic07.jpg" alt="Air Quality Analysis" class="project-img climate-img" />
