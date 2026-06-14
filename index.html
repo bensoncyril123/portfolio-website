@@ -256,13 +256,9 @@
           <img src="./assets/project-5.png" alt="Travel Tracker" class="project-img cancer-img" />
         </div>
         <p style="text-align: justify; padding: 0 1rem; font-size: 0.72rem;">
-          Conducted in-depth exploratory data analysis on Fine Needle Aspiration (FNA) images,
-          this project applied machine learning techniques to enhance breast cancer diagnostics.
-          Five classification models were evaluated—Logistic Regression, K-Nearest Neighbors (KNN),
-          Random Forests, Support Vector Machines (SVM) with RBF kernel, and Gradient Boosting.
-          The SVM with RBF kernel achieved the highest accuracy of 98.25%, demonstrating superior performance.
-          These findings highlight the potential of machine learning to improve diagnostic accuracy and support
-          healthcare professionals in making precise, timely diagnoses.
+          Conducted an end-to-end exploratory and predictive analysis of the Wisconsin Diagnostic Breast Cancer dataset, which characterises 569 Fine Needle Aspiration (FNA) samples using 30 features derived from the mean, standard error, and worst-case values of 10 cell-nucleus measurements (radius, texture, concavity, symmetry, and more).
+          Following EDA and multivariate analysis of feature correlations and class separability, five classifiers &mdash; Logistic Regression, K-Nearest Neighbors, Random Forest, Support Vector Machine with an RBF kernel, and Gradient Boosting &mdash; were trained and evaluated on a held-out test split.
+          The SVM with RBF kernel achieved the highest accuracy at 98.25%, followed by Logistic Regression (97.37%), Random Forest and KNN (96.49% each), and Gradient Boosting (95.61%) &mdash; demonstrating the strong diagnostic potential of machine learning for distinguishing malignant from benign tumours from FNA imaging features.
         </p>
         <div class="btn-container" style="text-align: center;">
           <button class="btn btn-color-2 project-btn" onclick="window.open('./assets/Cancer Project.html', '_blank')">View Project</button>
@@ -279,14 +275,9 @@
           <img src="./assets/project-6.png" alt="Air Quality Analysis" class="project-img shiny-img" />
         </div>
         <p style="text-align: justify; padding: 0 1rem; font-size: 0.72rem;">
-          Developed an R Shiny app to conduct a detailed analysis of PM2.5
-          levels across major cities in the USA and India. Utilized advanced data
-          manipulation and visualization techniques to enable users to explore air
-          quality trends, generate summary statistics, and perform targeted analyses
-          by selecting specific countries, cities, and date ranges. The app features
-          dynamic plots with contextual annotations for significant events, providing
-          critical insights into air quality fluctuations and their correlations with
-          major occurrences. This tool supports data-driven environmental assessments and informs public health decisions.
+          Built an interactive R Shiny application for exploring PM2.5 air-quality trends across major cities in the United States and India, combining data wrangling, summary statistics, and dynamic visualisation in a single tool.
+          Users can filter by country, city, and date range to generate on-the-fly summary statistics and time-series plots, with contextual annotations marking significant events that drove notable pollution spikes or drops.
+          The app is designed to support data-driven environmental assessment and public health decision-making by making granular, comparative air-quality analysis accessible without writing any code.
         </p>
         <div class="btn-container" style="text-align: center;">
           <button class="btn btn-color-2 project-btn" onclick="window.open('https://cyrilbenson1.shinyapps.io/Assignmentn/', '_blank')">View Project</button>
@@ -304,11 +295,9 @@
           <img src="./assets/pic04.jpg" alt="Air Quality Analysis" class="project-img titanic-img" />
         </div>
         <p style="text-align: justify; padding: 0 1rem; font-size: 0.72rem;">
-          This project analyzes Titanic survival outcomes using IRLS logistic regression and Monte Carlo simulations,
-          revealing that gender, age, and class strongly influenced survival. Women, younger passengers, and higher-class
-          individuals had better survival chances, while increased lifeboat capacity offered modest improvements. Variance
-          reduction techniques, especially antithetic variates, enhanced the precision of the simulations.
-          The study demonstrates the power of statistical methods to uncover insights and inform crisis management strategies.
+          Implemented logistic regression from first principles via Iteratively Reweighted Least Squares (IRLS) to model Titanic survival as a function of sex, age, class, and fare, reaching 80.0% classification accuracy after convergence in 6 iterations.
+          The fitted coefficients confirmed that being female (&beta; = 2.61) and travelling in a higher class (&beta; = -1.15 for lower class) were the strongest predictors of survival, while age and fare had smaller effects.
+          Monte Carlo simulation of 10,000 synthetic passengers estimated a baseline survival probability of 44.9%, rising only marginally to 45.3% under a hypothetical 95% lifeboat-capacity scenario; applying variance-reduction techniques &mdash; stratified sampling, antithetic variates, and control variates &mdash; refined this estimate to as high as 50.1%, with antithetic variates proving most effective at reducing simulation variance.
         </p>
         <div class="btn-container" style="text-align: center;">
           <button class="btn btn-color-2 project-btn" onclick="window.open('./assets/Analyzing_Survival_Outcomes___IRLS_and_Simulation_Techniques.pdf', '_blank')">View Project</button>
@@ -325,13 +314,9 @@
           <img src="./assets/project-7.png" alt="Modeling FSW Distribution" class="project-img hiv-img" />
         </div>
         <p style="text-align: justify; padding: 0 1rem; font-size: 0.72rem;">
-          This project investigates the distribution of Female Sex Workers (FSWs) in sub-Saharan Africa using
-          a negative binomial mixed-effects model, incorporating environmental and sociological variables.
-          Key findings reveal that population density, urbanization levels (built index), temperature, crime rates,
-          and insect net usage significantly influence FSW counts across regions. Random effects for country, region,
-          and year accounted for unmeasured spatial and temporal variability, highlighting the importance of contextual factors.
-          These insights provide critical guidance for targeted HIV prevention strategies by identifying key determinants
-          and emphasizing the need for integrated public health interventions.
+          Modeled the spatial distribution of Female Sex Workers (FSWs) across five sub-Saharan African countries &mdash; Mozambique, Malawi, Zimbabwe, Zambia, and Botswana &mdash; using 675 survey transects, combining environmental covariates (population density, urbanisation, temperature, rainfall, night-time light) with sociological factors (HIV prevalence, crime, insect-net use, wealth index, age at first sexual experience).
+          After diagnosing overdispersion in an initial Poisson model, a negative binomial mixed-effects model with random intercepts for country, region, year, and month, and an offset for survey area, provided the best fit (AIC = 2863.2).
+          The final model identified population density, urbanisation, temperature, high local crime, and insect-net usage as significant predictors of FSW counts, with substantial unexplained variability attributable to country- and region-level random effects &mdash; insights intended to guide the geographic targeting of HIV-prevention interventions.
         </p>
         <div class="btn-container" style="text-align: center;">
           <button class="btn btn-color-2 project-btn" onclick="window.open('./assets/Modeling Female Sex Worker Distribution - HIV.pdf', '_blank')">View Project</button>
@@ -348,14 +333,9 @@
           <img src="./assets/pikeee.png" alt="Modeling FSW Distribution" class="project-img gibbs-img" />
         </div>
         <p style="text-align: justify; padding: 0 1rem; font-size: 0.72rem;">
-          This project implements Bayesian linear regression using Gibbs sampling to model U.S. medical insurance charges
-          as a function of standardized covariates including age, sex, BMI, number of children, smoking status, and geographic region.
-          Conjugate priors are specified: a multivariate normal prior on the regression coefficients and an inverse-gamma prior on the error variance.
-          The conjugate structure yields closed-form full conditional distributions, enabling efficient Gibbs sampling without approximation.
-          Posterior inference identifies smoking, age, and BMI as dominant predictors with high posterior inclusion probability,
-          while sex and several regional effects are negligible. Diagnostics confirm convergence and stability of the Markov chain.
-          Frequentist linear regression estimates are presented for baseline comparison and show consistent directionality,
-          though the Bayesian framework offers more comprehensive uncertainty quantification.
+          Built a Bayesian linear regression model with a custom Gibbs sampler (5,000 iterations, 1,000 burn-in) to estimate the effects of age, sex, BMI, number of children, smoking status, and region on medical insurance charges for 1,338 policyholders, using conjugate normal-inverse-gamma priors for closed-form posterior updates.
+          Posterior estimates identified smoking status as the dominant driver of cost (posterior mean &beta; = 0.795, P(&beta; &gt; 0) = 1.000), followed by age (&beta; = 0.298) and BMI (&beta; = 0.171), with smaller but credible effects for number of children and the southeast/southwest regions.
+          A parallel frequentist OLS model produced consistent point estimates and significance patterns (e.g., smoking added $23,849 to charges, p &lt; 0.0001), and MCMC trace and density diagnostics confirmed good mixing and convergence &mdash; illustrating how Bayesian credible intervals and inclusion probabilities can complement traditional p-values for healthcare cost modelling.
         </p>
         <div class="btn-container" style="text-align: center;">
           <button class="btn btn-color-2 project-btn" onclick="window.open('./assets/Bayesian_Linear_Regression_with_Gibbs_Sampling.pdf', '_blank')">View Project</button>
@@ -372,15 +352,9 @@
           <img src="./assets/pie.png" alt="Modeling FSW Distribution" class="project-img gene-img" />
         </div>
         <p style="text-align: justify; padding: 0 1rem; font-size: 0.72rem;">
-          This project develops a binary classification model to predict maize gene pollen specificity
-          using only genomic sequence features, bypassing the cost and complexity of transcriptomic or proteomic profiling.
-          The dataset includes 12,725 genes and 2,626 sequence-derived features sourced from MaizeGDB. After initial filtering
-          to remove low-variance and highly correlated features, dimensionality reduction techniques such as PCA and t-SNE were applied
-          but revealed limited class separation. A logistic regression model with LASSO regularization was trained to enforce sparsity and
-          identify informative predictors. The model achieved an AUROC of 0.7437 on the held-out test set,
-          indicating moderate predictive performance, with high specificity and lower sensitivity.
-          Analysis of feature weights highlighted biologically interpretable sequence motifs, including the
-          overrepresentation of certain 3-mers potentially linked to cis-regulatory elements.
+          Developed a binary classifier to predict whether a maize gene is expressed specifically in pollen using only genomic sequence-derived features &mdash; bypassing the cost of transcriptomic or proteomic profiling &mdash; across 12,725 genes and 2,626 candidate features sourced from MaizeGDB.
+          After filtering low-variance and highly correlated features, PCA and t-SNE revealed limited natural separation between pollen-specific and non-specific genes, motivating a supervised approach: a LASSO-regularised logistic regression retained 336 informative sequence features.
+          The final model achieved an AUROC of 0.744 on held-out data &mdash; meaningfully better than chance, with high specificity but lower sensitivity &mdash; and feature-weight analysis flagged enriched sequence motifs, including the 3-mer ATC, as candidate cis-regulatory elements worth exploring in future pollen-specificity research.
         </p>
         <div class="btn-container" style="text-align: center;">
           <button class="btn btn-color-2 project-btn" onclick="window.open('./assets/Predicting Gene Expression Specificity in Maize Pollen.pdf', '_blank')">View Project</button>
@@ -397,14 +371,9 @@
           <img src="./assets/pikee.png" alt="Modeling FSW Distribution" class="project-img fire-img" />
         </div>
         <p style="text-align: justify; padding: 0 1rem; font-size: 0.72rem;">
-          This project explores spatial statistical methods to analyze the distribution
-          and intensity of wildfire damage in California using a subset of 10,000 stratified wildfire incidents.
-          The data includes geographic coordinates and ordinal damage levels,
-          which were converted to numeric scores to facilitate modeling.
-          Global and local spatial autocorrelation were detected using Moran’s I
-          and Geary’s C, both indicating significant clustering of similar damage levels.
-          Spatial autoregressive (SAR) and conditional autoregressive (CAR) models were fitted,
-          showing strong localized spatial dependence with little sensitivity to neighborhood cutoff.
+          Analysed spatial patterns in building-damage severity across a stratified sample of 10,000 California wildfires (drawn from a database of over 100,000), mapping damage levels from "No Damage" to "Destroyed" by location and county.
+          Global and local spatial autocorrelation tests (Moran's I = 0.603, Geary's C = 0.395, both p &lt; 0.0001) confirmed strong, statistically significant clustering of similar damage levels across the state.
+          Spatial autoregressive (SAR) and conditional autoregressive (CAR) models, fitted on a ~2,000-fire subsample with a 4-nearest-neighbour weights matrix, produced consistent estimates (mean damage level &asymp; 2.5) largely insensitive to the neighbourhood cutoff distance, while a fitted spherical variogram (range &asymp; 22km) corroborated that wildfire damage correlation decays sharply with distance &mdash; reinforcing that local, rather than regional, factors dominate damage severity.
         </p>
         <div class="btn-container" style="text-align: center;">
           <button class="btn btn-color-2 project-btn" onclick="window.open('./assets/Spatial Analysis of Wildfire Damage in California.pdf', '_blank')">View Project</button>
@@ -421,14 +390,9 @@
           <img src="./assets/pic07.jpg" alt="Air Quality Analysis" class="project-img climate-img" />
         </div>
         <p style="text-align: justify; padding: 0 1rem; font-size: 0.72rem;">
-          This project evaluates the Pew Research Center's 2022 global threats survey,
-          focusing on climate change perceptions across 19 advanced economies and exploring
-          the optimal sample size needed to achieve a small margin of error. Using data from
-          the American Trends Panel (ATP) for the U.S., a margin of error formula was applied
-          to determine the relationship between sample size and precision, revealing that reducing
-          the margin of error significantly requires a substantial increase in sample size.
-          Key limitations, such as sampling bias, differential incentives, and non-response bias,
-          were highlighted alongside the strengths of stratification and rigorous survey methods.
+          Re-examined the Pew Research Center's 2022 cross-national survey on global threats &mdash; which found climate change ranked as the top concern across 19 advanced economies &mdash; to investigate the statistical relationship between sample size and margin of error.
+          Focusing on the U.S. American Trends Panel (3,581 of 4,120 sampled respondents, an 87% response rate, &plusmn;2.3-point margin of error), the analysis derived the implied population variance from the published margin of error and used it to project sample-size requirements for tighter precision.
+          The results showed that shrinking the margin of error to 0.2% would require expanding the sample to roughly 25,000 respondents &mdash; a substantial cost increase &mdash; and the discussion highlights sampling, non-response, and incentive-related biases as key limitations of the original survey design, alongside recommendations for more transparent methodology in future iterations.
         </p>
         <div class="btn-container" style="text-align: center;">
           <button class="btn btn-color-2 project-btn" onclick="window.open('./assets/Climate Change Remains Top Global threat.pdf', '_blank')">View Project</button>
