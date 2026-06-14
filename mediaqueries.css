@@ -25,15 +25,17 @@
   #about {
     padding-bottom: 0.5rem;
   }
-  #profile,
   .section-container {
     display: block;
   }
   #profile {
-    min-height: 0;
-  }
-  .arrow {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    min-height: 100vh;
+    text-align: center;
   }
   section,
   .section-container {
@@ -58,10 +60,6 @@
   #contact,
   footer {
     height: 40vh;
-  }
-  #profile {
-    height: 83vh;
-    margin-bottom: 0;
   }
   .article-container {
     display: grid;
@@ -112,10 +110,6 @@
     flex-direction: column;
     gap: 0.5rem;
     text-align: center;
-  }
-  #profile {
-    height: auto;
-    padding-bottom: 2rem;
   }
   .section__pic-container {
     width: 220px;
