@@ -623,6 +623,17 @@ footer p {
   flex-direction: column;
 }
 
+#projects .details-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#projects .btn-container {
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
 @media (max-width: 768px) {
   #projects .about-containers {
     flex: 1 1 100%;
