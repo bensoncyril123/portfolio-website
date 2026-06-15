@@ -18,19 +18,29 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
 
-// ── STAGGER SKILL ITEMS ──
+// ── ANIMATE BIO PARAGRAPHS ON SCROLL ──
+const bioObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("bio-visible");
+      bioObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2, rootMargin: "0px 0px -50px 0px" });
+
+document.querySelectorAll(".bio-chunk").forEach(el => bioObserver.observe(el));
+
+// ── ANIMATE SKILL ITEMS ON SCROLL ──
 const skillObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.querySelectorAll("article").forEach((item, i) => {
-        setTimeout(() => item.classList.add("skill-visible"), i * 60);
-      });
+      entry.target.classList.add("skill-visible");
       skillObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.1 });
+}, { threshold: 0.2, rootMargin: "0px 0px -50px 0px" });
 
-document.querySelectorAll(".article-container").forEach(el => skillObserver.observe(el));
+document.querySelectorAll(".article-container article").forEach(el => skillObserver.observe(el));
 
 // ── ANIMATE TIMELINE ITEMS ON SCROLL ──
 const timelineObserver = new IntersectionObserver((entries) => {
@@ -43,3 +53,15 @@ const timelineObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.2, rootMargin: "0px 0px -50px 0px" });
 
 document.querySelectorAll(".timeline-item").forEach(el => timelineObserver.observe(el));
+
+// ── ANIMATE PROJECT CARDS ON SCROLL ──
+const projectObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("project-visible");
+      projectObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+
+document.querySelectorAll("#projects .about-containers").forEach(el => projectObserver.observe(el));
