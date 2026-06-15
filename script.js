@@ -65,3 +65,15 @@ const projectObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
 
 document.querySelectorAll("#projects .about-containers").forEach(el => projectObserver.observe(el));
+
+// ── ANIMATE CERTIFICATIONS ON SCROLL ──
+const certObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("cert-visible");
+      certObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2, rootMargin: "0px 0px -50px 0px" });
+
+document.querySelectorAll(".certifications-container").forEach(el => certObserver.observe(el));
