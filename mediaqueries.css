@@ -39,6 +39,9 @@
     min-height: 100dvh;
     text-align: center;
   }
+  #profile .arrow {
+    bottom: 3rem;
+  }
   section,
   .section-container {
     height: fit-content;
