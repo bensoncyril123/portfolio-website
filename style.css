@@ -533,6 +533,90 @@ article .icon {
   cursor: default;
 }
 
+/* RESUME (EXPERIENCE & EDUCATION) SECTION */
+
+#resume {
+  position: relative;
+}
+
+.timeline {
+  position: relative;
+  max-width: 700px;
+  margin: 2rem auto 0;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: rgb(210, 210, 210);
+}
+
+.timeline-item {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -2rem;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #f5f5f0;
+  border: 2px solid rgb(163, 163, 163);
+}
+
+.timeline-dot--current {
+  background: #c9a84c;
+  border-color: #c9a84c;
+}
+
+.timeline-text {
+  text-align: left;
+}
+
+.timeline-role {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.timeline-company {
+  font-size: 0.8rem;
+  color: rgb(85, 85, 85);
+  margin: 0.3rem 0 0;
+}
+
+.timeline-link {
+  color: #c9a84c;
+  text-decoration: none;
+}
+
+.timeline-link:hover {
+  text-decoration: underline;
+}
+
+.timeline-date {
+  font-size: 0.75rem;
+  color: rgb(150, 150, 150);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
 /* PROJECTS SECTION */
 
 #projects {

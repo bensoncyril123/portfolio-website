@@ -148,6 +148,26 @@
   .about-bio {
     font-size: 0.77rem;
   }
+  .timeline {
+    padding-left: 1.5rem;
+  }
+  .timeline-item {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .timeline-dot {
+    left: -1.5rem;
+  }
+  .timeline-role {
+    font-size: 0.85rem;
+  }
+  .timeline-company {
+    font-size: 0.72rem;
+  }
+  .timeline-date {
+    font-size: 0.7rem;
+    white-space: normal;
+  }
   .project-title {
     font-size: 0.9rem;
   }
