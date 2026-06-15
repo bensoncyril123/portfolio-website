@@ -31,3 +31,15 @@ const skillObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll(".article-container").forEach(el => skillObserver.observe(el));
+
+// ── ANIMATE TIMELINE ITEMS ON SCROLL ──
+const timelineObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("timeline-visible");
+      timelineObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2, rootMargin: "0px 0px -50px 0px" });
+
+document.querySelectorAll(".timeline-item").forEach(el => timelineObserver.observe(el));
