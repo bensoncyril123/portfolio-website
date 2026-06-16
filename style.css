@@ -638,54 +638,6 @@ article .icon {
   flex-shrink: 0;
 }
 
-.certifications-container {
-  max-width: 700px;
-  margin: 2rem auto 0;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.certifications-container.cert-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.certifications-list {
-  list-style: none;
-  margin: 0;
-  padding-left: 2rem;
-}
-
-.certification-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-  margin-bottom: 0.7rem;
-}
-
-.certification-item:last-child {
-  margin-bottom: 0;
-}
-
-.cert-name {
-  font-size: 0.85rem;
-  font-weight: 500;
-}
-
-.cert-bullet {
-  color: #c9a84c;
-  margin-right: 0.35em;
-}
-
-.cert-issuer {
-  font-size: 0.75rem;
-  color: rgb(150, 150, 150);
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
 /* PROJECTS SECTION */
 
 #projects {

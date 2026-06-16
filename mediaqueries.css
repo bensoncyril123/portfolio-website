@@ -168,20 +168,6 @@
     font-size: 0.7rem;
     white-space: normal;
   }
-  .certification-item {
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-  .cert-name {
-    font-size: 0.78rem;
-    display: block;
-    white-space: normal;
-  }
-  .cert-issuer {
-    font-size: 0.7rem;
-    display: block;
-    white-space: normal;
-  }
   .project-title {
     font-size: 0.9rem;
   }
