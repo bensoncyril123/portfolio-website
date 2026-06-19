@@ -17,6 +17,7 @@
           <li><a href="#about">About</a></li>
           <li><a href="#resume">Experience</a></li>
           <li><a href="#experience">Skills</a></li>
+          <li><a href="#certifications">Certifications</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -40,6 +41,7 @@
         <li><a href="#about" onclick="toggleMenu()">About</a></li>
         <li><a href="#resume" onclick="toggleMenu()">Experience</a></li>
         <li><a href="#experience" onclick="toggleMenu()">Skills</a></li>
+        <li><a href="#certifications" onclick="toggleMenu()">Certifications</a></li>
         <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
         <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
       </ul>
@@ -208,6 +210,53 @@
         </div>
       </div>
     </section>
+
+    <section id="certifications" class="fade-in">
+      <p class="section__text__p1">My</p>
+      <h1 class="title">Certifications</h1>
+      <div class="experience-details-container">
+        <div class="certifications-container">
+          <p class="cert-intro">
+            Professional certificates spanning the IBM Data Science Professional Certificate track (Coursera) and SAS programming.
+            <br>
+            <a href="https://www.credly.com/users/benson-cyril-nana-boakye.25f52ed6/badges/credly" target="_blank" rel="noopener noreferrer">View all badges on Credly &rarr;</a>
+          </p>
+          <div class="certifications-grid">
+            <div class="cert-card">
+              <img src="./assets/credly/ibm-data-science-professional-certificate-v3.png" alt="IBM Data Science Professional Certificate badge" loading="lazy" />
+              <span class="cert-name">IBM Data Science Professional Certificate</span>
+              <span class="cert-issuer">Coursera &middot; IBM</span>
+              <a class="cert-link" href="https://www.credly.com/badges/7d3f256a-58de-4213-8e04-5afd1d48b495/public_url" target="_blank" rel="noopener noreferrer">View Credential</a>
+            </div>
+            <div class="cert-card">
+              <img src="./assets/credly/getting-started-with-sas-programming.png" alt="Getting Started with SAS Programming badge" loading="lazy" />
+              <span class="cert-name">Getting Started with SAS&reg; Programming</span>
+              <span class="cert-issuer">SAS</span>
+              <a class="cert-link" href="https://www.credly.com/badges/b5e7fa76-1b21-4ce1-91dd-f547a0c769bf/public_url" target="_blank" rel="noopener noreferrer">View Credential</a>
+            </div>
+            <div class="cert-card">
+              <img src="./assets/credly/machine-learning-with-python-v2.png" alt="Machine Learning with Python badge" loading="lazy" />
+              <span class="cert-name">Machine Learning with Python</span>
+              <span class="cert-issuer">Coursera &middot; IBM</span>
+              <a class="cert-link" href="https://www.credly.com/badges/465c44ed-e85c-4958-97c5-8ed81d3261e6/public_url" target="_blank" rel="noopener noreferrer">View Credential</a>
+            </div>
+            <div class="cert-card">
+              <img src="./assets/credly/databases-and-sql-for-data-science.png" alt="Databases and SQL for Data Science badge" loading="lazy" />
+              <span class="cert-name">Databases and SQL for Data Science</span>
+              <span class="cert-issuer">Coursera &middot; IBM</span>
+              <a class="cert-link" href="https://www.credly.com/badges/025b466d-fa7a-4902-a71c-49c6a59aab32/public_url" target="_blank" rel="noopener noreferrer">View Credential</a>
+            </div>
+            <div class="cert-card">
+              <img src="./assets/credly/applied-data-science-capstone.png" alt="Applied Data Science Capstone badge" loading="lazy" />
+              <span class="cert-name">Applied Data Science Capstone</span>
+              <span class="cert-issuer">Coursera &middot; IBM</span>
+              <a class="cert-link" href="https://www.credly.com/badges/89c1cca1-2402-4686-b6dd-9be8d8a1c6f4/public_url" target="_blank" rel="noopener noreferrer">View Credential</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="projects" class="fade-in">
       <p class="section__text__p1">Browse My Recent</p>
       <h1 class="title">Projects</h1>
@@ -230,6 +279,24 @@
               <div class="btn-container" style="text-align: center;">
                 <button class="btn btn-color-2 project-btn" onclick="window.open('./assets/Diabetes_Risk_Project.html', '_blank')">View Project</button>
                 <button class="btn btn-color-2 project-btn" onclick="window.open('https://bensoncyril123-diabetes-dashboard-dashboardapp-i5lrtb.streamlit.app/', '_blank')">Live Dashboard</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-containers">
+            <div class="details-container color-container">
+              <h2 class="experience-sub-title project-title" style="text-align: left;">
+                Falcon 9 First Stage Landing Prediction: Data Collection, SQL &amp; Visual EDA, Geospatial Analysis &amp; Classification Modeling
+              </h2>
+              <div class="article-container">
+                <img src="./assets/spacex-cover.png" alt="Falcon 9 First Stage Landing Prediction" class="project-img spacex-img" loading="lazy" />
+              </div>
+              <p style="text-align: justify; padding: 0 1rem; font-size: 0.72rem;">
+                Built an end-to-end pipeline to predict whether a SpaceX Falcon 9 booster's first stage would land successfully, using 90 launches sourced independently from SpaceX's public REST API and a Wikipedia table scraped with BeautifulSoup, then reconciled against each other before modeling. Landing labels were engineered from raw outcome strings while treating missing landing-pad data as informative &mdash; rather than erroneous &mdash; and explored through direct SQL queries against a Db2 table, matplotlib/seaborn analysis of flight number, payload mass, launch site and orbit, and an interactive Folium map and Plotly Dash dashboard profiling each launch site's geography and success rate.
+                Four classifiers &mdash; Logistic Regression, SVM, Decision Tree, and KNN &mdash; were tuned via GridSearchCV with 10-fold cross-validation on an 80/20 split; the tuned Decision Tree was the strongest performer at 94.4% held-out test accuracy, correctly calling all 12 successful landings and 5 of 6 failures, framed throughout as the basis for estimating SpaceX's per-launch cost advantage from booster reuse.
+              </p>
+              <div class="btn-container" style="text-align: center;">
+                <button class="btn btn-color-2 project-btn" onclick="window.open('./assets/SpaceX_Falcon9_Landing_Prediction.html', '_blank')">View Project</button>
               </div>
             </div>
           </div>

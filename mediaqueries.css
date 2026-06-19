@@ -59,6 +59,10 @@
   .about-containers {
     margin-top: 0;
   }
+  .certifications-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -167,6 +171,23 @@
   .timeline-date {
     font-size: 0.7rem;
     white-space: normal;
+  }
+  .certifications-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+  }
+  .cert-card img {
+    width: 64px;
+    height: 64px;
+  }
+  .cert-name {
+    font-size: 0.74rem;
+  }
+  .cert-issuer {
+    font-size: 0.66rem;
+  }
+  .cert-link {
+    font-size: 0.68rem;
   }
   .project-title {
     font-size: 0.9rem;

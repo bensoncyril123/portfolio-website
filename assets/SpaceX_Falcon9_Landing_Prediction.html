@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Falcon 9 First Stage Landing Prediction — Capstone Write-up</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f5f5f0; --bg-alt:#ffffff; --card:#ffffff; --border:rgba(163,163,163,0.45);
+    --text:#262626; --text-strong:#1a1a1a; --muted:rgb(85,85,85);
+    --green:#2f7a4d; --red:#b3463f; --gold:#c9a84c; --gold-dark:#9c7a2c;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:"Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height:1.6;
+  }
+  a{color:var(--gold-dark); text-decoration:none;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
+
+  nav.topnav{
+    position:sticky; top:0; z-index:20; background:rgba(245,245,240,0.92);
+    backdrop-filter:blur(8px); border-bottom:1px solid var(--border);
+  }
+  nav.topnav .wrap{display:flex; align-items:center; gap:22px; height:54px; overflow-x:auto; white-space:nowrap;}
+  nav.topnav .brand{font-weight:700; color:var(--text-strong); margin-right:8px; font-size:0.85em;}
+  nav.topnav a{color:var(--muted); font-size:0.76em;}
+  nav.topnav a:hover{color:var(--gold-dark);}
+
+  header.hero{
+    position:relative; overflow:hidden;
+    background:linear-gradient(160deg, #ffffff 0%, #f5f5f0 70%);
+    padding:72px 0 40px; border-bottom:1px solid var(--border);
+  }
+  header.hero::before{
+    content:""; position:absolute; top:-180px; left:50%; transform:translateX(-50%);
+    width:780px; height:420px; z-index:0; pointer-events:none;
+    background:radial-gradient(closest-side, rgba(201,168,76,0.22), rgba(47,122,77,0.10) 55%, transparent 78%);
+    filter:blur(10px);
+  }
+  header.hero .wrap{position:relative; z-index:1;}
+  header.hero .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    color:var(--gold-dark); letter-spacing:.08em; text-transform:uppercase; font-size:0.66em; font-weight:700;
+    background:rgba(201,168,76,0.12); border:1px solid rgba(201,168,76,0.4);
+    padding:6px 14px; border-radius:30px;
+  }
+  header.hero h1{
+    font-size:clamp(1.5em, 4vw, 2.3em); font-weight:800; margin:18px 0 10px;
+    line-height:1.12; letter-spacing:-0.015em;
+    background:linear-gradient(100deg, #1a1a1a 12%, #3a3a3a 30%, #c9a84c 50%, #3a3a3a 70%, #1a1a1a 88%);
+    background-size:250% auto;
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    animation:shine 11s ease-in-out infinite alternate;
+  }
+  @keyframes shine{0%{background-position:0% 50%;}100%{background-position:100% 50%;}}
+  header.hero .eyebrow .dot{
+    width:7px; height:7px; border-radius:50%; background:var(--gold);
+    box-shadow:0 0 8px 2px rgba(201,168,76,0.6);
+  }
+  header.hero p.sub{color:var(--muted); font-size:0.88em; max-width:680px; margin:0 0 32px;}
+
+  .stat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+  .stat-box{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px 16px; box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+  .stat-box .num{font-size:1.22em; font-weight:700; color:var(--text-strong);}
+  .stat-box .label{color:var(--muted); font-size:0.72em; margin-top:4px;}
+  .stat-box.green .num{color:var(--green);}
+  .stat-box.blue .num{color:var(--text-strong);}
+  .stat-box.orange .num{color:var(--gold-dark);}
+
+  .pipeline{display:flex; align-items:center; justify-content:space-between; margin:36px 0 8px; flex-wrap:wrap; gap:6px;}
+  .pipeline .step{color:var(--muted); font-size:0.74em; text-align:center; flex:1; min-width:90px;}
+  .pipeline .step b{display:block; color:var(--text-strong); font-size:0.88em;}
+  .pipeline .arrow{color:rgb(163,163,163); font-size:1.1em;}
+
+  section{padding:56px 0;}
+  section + section{border-top:1px solid var(--border);}
+  section .kicker{color:var(--gold-dark); text-transform:uppercase; letter-spacing:.07em; font-size:0.68em; font-weight:700;}
+  section h2{font-size:1.3em; margin:8px 0 14px; color:var(--text-strong);}
+  section > .wrap > p.lead{color:var(--muted); max-width:740px; margin-bottom:30px;}
+
+  .card{background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-bottom:26px; box-shadow:0 1px 4px rgba(0,0,0,0.04);}
+  .card .visual{display:block; width:100%; background:#f0f0f0;}
+  .card .visual img, .card .visual iframe{display:block; width:100%; border:none;}
+  .card .content{padding:22px 26px;}
+  .card .content h3{margin:0 0 8px; font-size:0.95em; color:var(--text-strong);}
+  .card .content p.desc{color:var(--muted); margin:0 0 14px; font-size:0.84em;}
+  .insight{
+    padding:13px 16px; background:rgba(201,168,76,0.10); border-left:3px solid var(--gold);
+    border-radius:6px; font-size:0.8em;
+  }
+  .insight b{color:var(--gold-dark);}
+
+  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+  .grid-3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;}
+  @media(max-width:760px){
+    .grid-2,.grid-3{grid-template-columns:1fr;}
+    .stat-grid{grid-template-columns:1fr 1fr;}
+  }
+
+  .fact-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  .fact{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+  .fact .num{font-size:1.08em; font-weight:700; color:var(--gold-dark);}
+  .fact .desc{color:var(--muted); font-size:0.76em; margin-top:6px;}
+  .big-num{font-size:1.55em; font-weight:800;}
+  .big-num-label{color:var(--muted); font-size:0.76em; margin-top:4px;}
+  @media(max-width:760px){.fact-grid{grid-template-columns:1fr 1fr;}}
+
+  .pill{display:inline-block; padding:4px 11px; border-radius:20px; font-size:0.7em; font-weight:600; margin-right:8px; background:#fff; border:1px solid rgb(163,163,163);}
+  .pill.api{color:var(--gold-dark); border-color:var(--gold);}
+  .pill.scrape{color:var(--green); border-color:var(--green);}
+
+  table.results{width:100%; border-collapse:collapse; font-size:0.8em;}
+  table.results th, table.results td{padding:10px 14px; text-align:left; border-bottom:1px solid var(--border);}
+  table.results th{color:var(--muted); font-weight:600; font-size:0.74em;}
+  table.results td{color:var(--text);}
+  table.results tr.winner td{color:var(--green); font-weight:700;}
+
+  .mini-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  .mini-grid figure{margin:0; background:var(--card); border:1px solid var(--border); border-radius:10px; overflow:hidden;}
+  .mini-grid img{width:100%; display:block;}
+  .mini-grid figcaption{padding:8px 10px; font-size:0.72em; color:var(--muted);}
+  @media(max-width:760px){.mini-grid{grid-template-columns:1fr;}}
+
+  @media(max-width:600px){
+    html{font-size:14px;}
+    header.hero{padding:40px 0 24px;}
+    header.hero h1{font-size:1.45em;}
+    header.hero p.sub{font-size:0.82em;}
+    header.hero .eyebrow{font-size:0.62em; padding:5px 10px;}
+    .stat-box{padding:14px 12px;}
+    .stat-box .num{font-size:1.05em;}
+    .stat-box .label{font-size:0.68em;}
+    .pipeline{display:none;}
+    section{padding:34px 0;}
+    section h2{font-size:1.1em;}
+    section .kicker{font-size:0.64em;}
+    section > .wrap > p.lead{font-size:0.85em;}
+    .card .content{padding:16px 18px;}
+    .card .content h3{font-size:0.92em;}
+    .card .content p.desc{font-size:0.8em;}
+    .insight{font-size:0.78em; padding:11px 14px;}
+    nav.topnav a{font-size:0.7em;}
+    nav.topnav .brand{font-size:0.8em;}
+    nav.topnav .wrap{gap:14px;}
+    .fact{padding:14px;}
+    .fact .num{font-size:1em;}
+    .fact .desc{font-size:0.74em;}
+    .big-num{font-size:1.4em;}
+    .big-num-label{font-size:0.72em;}
+    .pill{font-size:0.64em; padding:3px 9px;}
+    table.results{font-size:0.78em;}
+    table.results th{font-size:0.68em;}
+    table.results th,table.results td{padding:8px 8px;}
+    .mini-grid figcaption{font-size:0.68em;}
+    footer{font-size:0.72em;}
+  }
+
+  footer{padding:40px 0 70px; color:var(--muted); font-size:0.78em;}
+  footer ul{padding-left:18px;}
+  footer li{margin-bottom:4px;}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="wrap">
+    <span class="brand">SpaceX Capstone</span>
+    <a href="#problem">Problem Statement</a>
+    <a href="#data-collection">Data Collection</a>
+    <a href="#data-wrangling">Wrangling</a>
+    <a href="#eda-sql">EDA · SQL</a>
+    <a href="#eda-viz">EDA · Visualization</a>
+    <a href="#geo">Geography</a>
+    <a href="#dashboard">Dashboard</a>
+    <a href="#predictive">Predictive Model</a>
+    <a href="#conclusion">Conclusion</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span>IBM Applied Data Science Capstone</div>
+    <h1>Falcon 9 First Stage Landing Prediction</h1>
+    <p class="sub">Can a Falcon 9 booster's landing be called before it ever leaves the pad? This analysis assembles 90 flights from SpaceX's public API and Wikipedia, isolates the variables — orbit, launch site, payload, flight history — that separate a clean landing from a lost booster, and trains a classifier that gets the call right 94.4% of the time on flights it never saw during training.</p>
+
+    <div class="stat-grid">
+      <div class="stat-box blue"><div class="num">90</div><div class="label">Falcon 9 launches analyzed</div></div>
+      <div class="stat-box green"><div class="num">66.7%</div><div class="label">Historical landing success rate</div></div>
+      <div class="stat-box orange"><div class="num">94.4%</div><div class="label">Best model test accuracy</div></div>
+      <div class="stat-box"><div class="num">4</div><div class="label">Classification algorithms compared</div></div>
+    </div>
+
+    <div class="pipeline">
+      <div class="step"><b>① Collect</b>API + scraping</div>
+      <div class="arrow">→</div>
+      <div class="step"><b>② Wrangle</b>Clean &amp; label</div>
+      <div class="arrow">→</div>
+      <div class="step"><b>③ Explore</b>SQL + plots</div>
+      <div class="arrow">→</div>
+      <div class="step"><b>④ Visualize</b>Maps &amp; dashboard</div>
+      <div class="arrow">→</div>
+      <div class="step"><b>⑤ Predict</b>Classification</div>
+    </div>
+  </div>
+</header>
+
+<section id="problem">
+  <div class="wrap">
+    <div class="kicker">Why This Matters</div>
+    <h2>Problem Statement</h2>
+    <p class="lead">SpaceX advertises Falcon 9 launches at a fraction of the competition's price, and that pricing gap traces back almost entirely to a single engineering capability: reusability.</p>
+
+    <div class="card">
+      <div class="visual"><img src="capstone_images/falcon9_rocket_family.png" alt="Falcon 9 and Falcon Heavy rocket family" style="background:#ffffff; padding:28px 0;"></div>
+      <div class="content">
+        <h3>The Booster Being Reused</h3>
+        <p class="desc">Falcon 9 has gone through several first-stage revisions — v1.0, v1.1, the upgraded v1.2 "Full Thrust," and the current Block 5 — alongside the triple-booster Falcon Heavy derivative. Across every variant, the first stage is the rocket's most expensive section: nine Merlin engines, the bulk of the airframe, and the avionics and landing legs needed to fly it back down intact. That's the part SpaceX recovers and re-flies; the second stage, which carries the payload the rest of the way to orbit, is expended on every mission regardless of outcome.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="content">
+        <div class="grid-2" style="margin-bottom:20px;">
+          <div style="text-align:center; padding:20px; border:1px solid var(--border); border-radius:12px;">
+            <div class="big-num" style="color:var(--green);">$62M</div>
+            <div class="big-num-label">SpaceX Falcon 9, advertised</div>
+          </div>
+          <div style="text-align:center; padding:20px; border:1px solid var(--border); border-radius:12px;">
+            <div class="big-num" style="color:var(--text-strong);">$165M+</div>
+            <div class="big-num-label">Other providers, per launch</div>
+          </div>
+        </div>
+        <p class="desc">Manufacturing a first stage from scratch is the dominant cost in building a Falcon 9. Recovering and refurbishing one instead — inspecting the engines, swapping a handful of components, requalifying it for flight — costs a fraction of that. Whether a given booster lands successfully is therefore not just an engineering outcome; it's the single biggest lever on what that launch actually costs SpaceX to fly.</p>
+        <div class="insight"><b>Key insight —</b> If we can predict, ahead of launch, whether the first stage will land — using only information available before liftoff, such as payload mass, target orbit, launch site, and the booster's own flight history — we have a usable proxy for what that launch costs SpaceX to fly. That's exactly the intelligence a competing launch provider would want before bidding against SpaceX for a contract. Everything from here forward is about collecting that pre-launch information, getting it into a clean, modelable form, and turning it into a working classifier.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="data-collection">
+  <div class="wrap">
+    <div class="kicker">Stage 1</div>
+    <h2>Data Collection</h2>
+    <p class="lead">Every Falcon 9 launch record used here comes from two independently maintained sources, reconciled against each other rather than taken on faith from either one alone.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="content">
+          <span class="pill api">SpaceX REST API</span>
+          <h3>Structured launch &amp; core data</h3>
+          <p class="desc">Rocket configuration, payload, launch site, and booster core/landing data pulled directly from SpaceX's own public API — the closest thing to a primary source available here, since it's the same data SpaceX's own systems track internally.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="content">
+          <span class="pill scrape">Web Scraping</span>
+          <h3>Wikipedia launch tables</h3>
+          <p class="desc">The "List of Falcon 9 and Falcon Heavy launches" Wikipedia page, maintained by an active community of spaceflight watchers, was parsed with BeautifulSoup into a second, independently sourced record of the same flights.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="insight">
+      <b>Key insight —</b> Treating the API and Wikipedia as two independent witnesses to the same events — rather than picking one and trusting it outright — let every field get cross-checked against a second copy before it touched a model. A booster serial number or landing outcome that disagreed between sources surfaced immediately as something to investigate, instead of silently corrupting downstream features the way an unverified single source could.
+    </div>
+  </div>
+</section>
+
+<section id="data-wrangling">
+  <div class="wrap">
+    <div class="kicker">Stage 2</div>
+    <h2>Data Wrangling</h2>
+    <p class="lead">The raw <code>Outcome</code> field packs two pieces of information into one string — where the booster attempted to land, and whether it actually stuck the landing (e.g. "True ASDS", "False Ocean", "None None") — and had to be decomposed into a clean binary target before any model could learn from it.</p>
+
+    <div class="card">
+      <div class="content">
+        <h3>Engineering the landing label</h3>
+        <p class="desc">Each of the eight raw outcome strings was mapped to <code>Class = 1</code> (booster landed intact) or <code>Class = 0</code> (it didn't), collapsing the location qualifier — ocean, RTLS ground pad, or ASDS drone ship — and the boolean success flag into the single target the model actually needs. A follow-up pass showed <code>LandingPad</code> missing for 40.6% of records. Rather than treat that as a data-quality problem to impute away, the missingness itself turned out to be informative: it marks exactly the flights where no landing was ever attempted in the first place.</p>
+        <div class="insight">
+          <b>Key insight —</b> "No landing attempted" flights share the exact same missing-data signature as outright landing failures — both leave <code>LandingPad</code> blank. That's a textbook case of data missing not at random, and it mattered for modeling: folding both cases into <code>Class = 0</code>, rather than dropping the rows or treating a blank pad as an error, keeps the 66.7% success rate honest. Drop those rows instead, and both the apparent success rate and any model trained on it would have come out quietly optimistic.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="eda-sql">
+  <div class="wrap">
+    <div class="kicker">Stage 3a</div>
+    <h2>Exploratory Data Analysis — SQL</h2>
+    <p class="lead">Before a single chart got drawn, the launch records were loaded into a Db2 table and interrogated directly in SQL — a deliberately low-tech sanity check that catches schema and aggregation errors before they have a chance to hide inside a plot.</p>
+
+    <div class="card">
+      <div class="content">
+        <h3>Key Findings from SQL</h3>
+        <p class="desc">A handful of direct queries against the Db2 launch table established the basics before any plotting began. The raw records resolve to <b style="color:var(--gold-dark)">four distinct launch-site strings</b> — really three physical pads, since Cape Canaveral appears under two names alongside Kennedy and Vandenberg. Payload figures tell their own story: NASA's CRS resupply missions alone account for <b style="color:var(--gold-dark)">45,596 kg</b> of cargo carried to orbit, while the early Falcon 9 v1.1 booster averaged a comparatively modest <b style="color:var(--gold-dark)">2,928 kg</b> per flight — a sign of how much capacity grew as the vehicle matured, with the <b style="color:var(--gold-dark)">Falcon 9 Block 5</b> family eventually carrying the heaviest payloads on record. On the landing side, the first successful ground-pad touchdown came on <b style="color:var(--gold-dark)">December 22, 2015</b> — years after drone-ship recovery attempts had already begun. Between 2010 and 2017, those ocean-platform landings split evenly at <b style="color:var(--gold-dark)">five successes and five failures</b>, with ten further flights never attempting a landing at all.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="eda-viz">
+  <div class="wrap">
+    <div class="kicker">Stage 3b</div>
+    <h2>Exploratory Data Analysis — Visualization</h2>
+    <p class="lead">Before any algorithm sees this data, it's worth looking at it directly. Plotting flight number, payload mass, launch site, and orbit against landing outcome (<span style="color:#4c72b0">●</span> failure, <span style="color:#dd8452">●</span> success) surfaces the patterns a classifier will later have to learn — and flags which variables are even worth feeding it.</p>
+
+    <div class="card">
+      <div class="visual"><img src="capstone_images/orbit_types_diagram.png" alt="Diagram of LEO, MEO, GEO and HEO orbits around Earth" style="background:#ffffff; padding:30px 0;"></div>
+      <div class="content">
+        <h3>Orbit Types in This Dataset</h3>
+        <p class="desc">Every mission targets a specific orbit, and — as the charts below show — orbit type turns out to be one of the strongest predictors of landing success. Ten categories appear in the data: <b style="color:var(--gold-dark)">LEO</b> and <b style="color:var(--gold-dark)">VLEO</b> (the closest, under 2,000 km and 450 km), <b style="color:var(--gold-dark)">ISS</b> (the station's own low-Earth path), <b style="color:var(--gold-dark)">MEO</b> (mid-altitude, home to GPS satellites), the geostationary pair <b style="color:var(--gold-dark)">GTO</b> and <b style="color:var(--gold-dark)">GEO</b> (~35,786 km, matching Earth's rotation), <b style="color:var(--gold-dark)">SSO</b> (fixed local solar time on every pass), <b style="color:var(--gold-dark)">PO</b> (over both poles each revolution), <b style="color:var(--gold-dark)">HEO</b> (a high-eccentricity ellipse), and <b style="color:var(--gold-dark)">ES-L1</b> (the gravitational balance point between Earth and the Sun).</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="visual"><img src="capstone_images/03_Exploratory_Data_Analysis_-_Data_Visualization_cell21_out0.png" alt="Flight Number vs Payload Mass"></div>
+      <div class="content">
+        <h3>Flight Number vs. Payload Mass</h3>
+        <p class="desc">Each of the 90 flights plotted by its position in the launch sequence — a rough proxy for elapsed time and accumulated engineering experience — against the payload mass it carried.</p>
+        <div class="insight"><b>Key insight —</b> Failures show up throughout the program rather than clustering only in the earliest flights, but success becomes the overwhelming norm after roughly flight #60 — regardless of how heavy the payload is. That's the first hint that flight number is acting as a stand-in for something else entirely: how mature the booster design and recovery procedure had become by the time of launch.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="visual"><img src="capstone_images/03_Exploratory_Data_Analysis_-_Data_Visualization_cell27_out0.png" alt="Flight Number vs Launch Site"></div>
+      <div class="content">
+        <h3>Flight Number vs. Launch Site</h3>
+        <p class="desc">Which launch pad flew which flights over time, and how each site's track record evolved as the program matured.</p>
+        <div class="insight"><b>Key insight —</b> CCAFS SLC-40 flew the earliest missions in the program — and carries nearly all of the early failures that came with them — while KSC LC-39A and VAFB SLC-4E only came online roughly a third of the way through the flight history and show an overwhelmingly successful record since. Site and "experience era" are tangled together here, which is worth remembering before reading too much into launch site on its own.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="visual"><img src="capstone_images/03_Exploratory_Data_Analysis_-_Data_Visualization_cell31_out0.png" alt="Payload Mass vs Launch Site"></div>
+      <div class="content">
+        <h3>Payload Mass vs. Launch Site</h3>
+        <p class="desc">The full payload range each pad has handled, colored by landing outcome.</p>
+        <div class="insight"><b>Key insight —</b> VAFB SLC-4E only ever lofts lighter, polar-orbit payloads and shows a clean record doing it. CCAFS SLC-40 covers the widest payload range of any site and accounts for most of the dataset's failures, concentrated below about 7,000 kg — though that's partly circumstantial: it's also the pad that flew the most missions overall, including nearly all of the earliest, least-proven ones.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="visual"><img src="capstone_images/03_Exploratory_Data_Analysis_-_Data_Visualization_cell36_out0.png" alt="Success rate by orbit"></div>
+      <div class="content">
+        <h3>Landing Success Rate by Orbit</h3>
+        <p class="desc">Mean landing-success rate grouped by target orbit — effectively a <code>groupby().mean()</code> on the <code>Class</code> column.</p>
+        <div class="insight"><b>Key insight —</b> ES-L1, GEO, HEO and SSO missions landed successfully 100% of the time, while GTO — the program's highest-energy orbit — had the lowest success rate at just 50%. Worth flagging as a data scientist, not just a fan: three of those four "perfect" orbits rest on a single flight each, so 100% there means "didn't fail yet," not "guaranteed." GTO's 50%, built on 27 flights, is the only orbit-level success rate in this dataset large enough to take at face value.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="visual"><img src="capstone_images/03_Exploratory_Data_Analysis_-_Data_Visualization_cell40_out0.png" alt="Flight Number vs Orbit"></div>
+      <div class="content">
+        <h3>Flight Number vs. Orbit</h3>
+        <p class="desc">When in the program's history each orbit type was flown, colored by outcome.</p>
+        <div class="insight"><b>Key insight —</b> VLEO missions — flown almost exclusively in the back half of the program — are nearly all successful, while GTO missions are spread across nearly the entire flight history and show the most evenly mixed outcomes of any orbit, consistent with its 50% success rate over a meaningful sample of 27 flights.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="visual"><img src="capstone_images/03_Exploratory_Data_Analysis_-_Data_Visualization_cell44_out0.png" alt="Payload Mass vs Orbit"></div>
+      <div class="content">
+        <h3>Payload Mass vs. Orbit</h3>
+        <p class="desc">Payload mass plotted against target orbit, colored by outcome.</p>
+        <div class="insight"><b>Key insight —</b> The heaviest payloads in the entire dataset (roughly 13,000–15,500 kg) all go to VLEO and land successfully every time, while GTO — clustered around 5,000–7,000 kg — has the most evenly mixed success/failure split of any orbit. Payload mass and orbit move together here, which is exactly the kind of correlated-feature pattern a model needs more than one variable to untangle.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="visual"><img src="capstone_images/03_Exploratory_Data_Analysis_-_Data_Visualization_cell51_out0.png" alt="Success rate trend by year"></div>
+      <div class="content">
+        <h3>Landing Success Rate Trend by Year</h3>
+        <p class="desc">Yearly average success rate, 2010–2020, with the shaded band showing the uncertainty around each year's estimate.</p>
+        <div class="insight"><b>Key insight —</b> Success climbed from 0% in 2010–2013 to above 90% by 2019, with a temporary dip in 2018 worth noting rather than explaining away — the early years are built from only a handful of flights each, so single-year wobbles are expected. The broader shape is unambiguous, though: landing was a capability SpaceX learned and improved over the life of the program, not a fixed property of the booster design.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="geo">
+  <div class="wrap">
+    <div class="kicker">Stage 4</div>
+    <h2>Interactive Visual Analytics — Geography</h2>
+    <p class="lead">Zooming out from individual flights to the launch sites themselves shows that their locations were never arbitrary — they're dictated by orbital mechanics and range safety as much as by real estate.</p>
+
+    <div class="card">
+      <div class="visual"><iframe src="capstone_images/folium_map.html" height="480" loading="lazy"></iframe></div>
+      <div class="content">
+        <h3>Launch Site Geography</h3>
+        <p class="desc">An interactive Folium map of all three launch complexes, with marker clusters colored green for successful and red for failed landings at each site. Pan and zoom to explore individual launches — the underlying coordinates come from the same dataset used everywhere else in this report.</p>
+        <div class="insight"><b>Key insight —</b> All of SpaceX's pads sit within about a kilometer of open water — the nearest coastline point measured just 0.87 km from the launch pad — so a failed ascent falls into the ocean rather than a populated area. They also sit as close to the equator as the continental US allows: Earth's own rotational speed adds free velocity to an eastward launch, and that bonus is largest near the equator and shrinks toward the poles. Each site still keeps direct rail and highway access for hauling boosters in, while staying buffered from nearby cities.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="visual"><img src="capstone_images/folium_static_map.png" alt="Static launch site map"></div>
+      <div class="content">
+        <h3>Site Locations at a Glance</h3>
+        <p class="desc">A static latitude/longitude view of the same pads — Cape Canaveral, FL and Vandenberg, CA — for a quick geographic reference.</p>
+        <div class="insight"><b>Key insight —</b> The two Florida complexes sit only a few kilometers apart on the same coast, while Vandenberg's polar-orbit pad sits roughly 3,700 km away on the opposite coast — far enough that a southward polar launch from Florida would otherwise overfly populated land, which is exactly the kind of constraint that decides where a launch site can go.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="dashboard">
+  <div class="wrap">
+    <div class="kicker">Stage 4</div>
+    <h2>Interactive Dashboard</h2>
+    <p class="lead">A Plotly Dash app built on top of the same dataset lets a user filter interactively by launch site and payload range; these are snapshots of its default, all-sites view, included here because an interactive filter is easier to feel than to describe in static prose.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="visual"><img src="capstone_images/dash_pie_chart.png" alt="Overall landing outcome pie chart"></div>
+        <div class="content">
+          <p class="desc">60 of the 90 launches (66.7%) ended in a successful first-stage landing — the same figure confirmed three separate times now, via SQL, pandas, and this dashboard. That 66.7% is also the bar any model has to clear: a classifier that did nothing but always guess "success" would already be right two-thirds of the time.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="visual"><img src="capstone_images/dash_bar_chart.png" alt="Success vs failure by site"></div>
+        <div class="content">
+          <p class="desc">KSC LC-39A (77%) and VAFB SLC-4E (77%) both out-perform CCAFS SLC-40 (60%) on success rate, even though CCAFS SLC-40 handled by far the most launches — 55 of the 90 — largely because it's also the pad that's been flying the longest, early failures included.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="visual"><img src="capstone_images/dash_scatter.png" alt="Payload mass vs landing outcome by site"></div>
+        <div class="content">
+          <p class="desc">Failures concentrate at lower-to-mid payload masses across CCAFS SLC-40 and KSC LC-39A, reinforcing that payload mass alone doesn't drive failure — it's the combination of site and orbit that matters most.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="visual"><img src="capstone_images/dash_orbit_success.png" alt="Success rate by orbit type"></div>
+        <div class="content">
+          <p class="desc">The same orbit-success pattern from the static EDA holds up here: ES-L1/GEO/HEO/SSO at 100% (each resting on a thin sample, as noted earlier), GTO lowest at 50% on the program's largest single orbit cohort.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="predictive">
+  <div class="wrap">
+    <div class="kicker">Stage 5</div>
+    <h2>Predictive Analysis — Classification</h2>
+    <p class="lead">Four classification algorithms — Logistic Regression, Support Vector Machine, Decision Tree, and K-Nearest Neighbors — were each tuned with <code>GridSearchCV</code> (10-fold cross-validation) over an 80/20 train/test split, then scored on the held-out test set the tuning process never touched. With only 90 flights to work with, that train/test discipline matters more than usual — it's the only thing standing between a genuinely predictive model and one that has simply memorized the training data.</p>
+
+    <div class="card">
+      <div class="content">
+        <h3>Model Comparison</h3>
+        <p class="desc">Recall the baseline from the dashboard: a model that always predicts "success" is right 66.7% of the time without learning anything. Every algorithm here clears that bar — the real question is by how much, and how reliably.</p>
+        <table class="results">
+          <tr><th>Algorithm</th><th>Test Accuracy</th><th>Best CV Score</th></tr>
+          <tr><td>Logistic Regression</td><td>83.3%</td><td>84.6%</td></tr>
+          <tr><td>Support Vector Machine</td><td>83.3%</td><td>84.8%</td></tr>
+          <tr class="winner"><td>Decision Tree</td><td>94.4%</td><td>90.4%</td></tr>
+          <tr><td>K-Nearest Neighbors</td><td>88.9%</td><td>87.7%</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="visual"><img src="capstone_images/05_Predictive_Analysis_(Classification)_cell89_out0.png" alt="Accuracy score comparison"></div>
+      <div class="content">
+        <div class="insight"><b>Key insight —</b> The Decision Tree wins outright on held-out test accuracy and stays competitive on cross-validated score, making it the strongest, most consistent performer of the four — and the only one that meaningfully separates itself from the pack rather than landing in the same 83–89% cluster as the rest.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="visual"><img src="capstone_images/05_Predictive_Analysis_(Classification)_cell71_out0.png" alt="Decision tree confusion matrix"></div>
+      <div class="content">
+        <h3>Winning Model: Decision Tree</h3>
+        <p class="desc">Confusion matrix on the 18-flight held-out test set — the 20% of flights the model never saw while it was being tuned.</p>
+        <div class="insight"><b>Key insight —</b> The tuned decision tree correctly identified all 12 actual successful landings (zero false negatives) and correctly flagged 5 of the 6 actual failures — misclassifying only one failed landing as a success, for 94.4% overall accuracy. For this project's use case, that's the error worth watching: a false "it will land" is the one that would lead a competitor to underestimate SpaceX's cost advantage, while a false "it won't land" only makes them overly cautious.</div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:36px; font-size:0.88em; color:var(--muted);">Other models' confusion matrices</h3>
+    <p class="desc" style="margin-bottom:14px;">For completeness, the remaining three models' confusion matrices on the same test set — none beat the decision tree outright, but the pattern of errors each one makes differs in ways worth a glance.</p>
+    <div class="mini-grid">
+      <figure>
+        <img src="capstone_images/05_Predictive_Analysis_(Classification)_cell48_out0.png" alt="Logistic regression confusion matrix">
+        <figcaption>Logistic Regression — 83.3% test accuracy</figcaption>
+      </figure>
+      <figure>
+        <img src="capstone_images/05_Predictive_Analysis_(Classification)_cell60_out0.png" alt="SVM confusion matrix">
+        <figcaption>Support Vector Machine — 83.3% test accuracy</figcaption>
+      </figure>
+      <figure>
+        <img src="capstone_images/05_Predictive_Analysis_(Classification)_cell82_out0.png" alt="KNN confusion matrix">
+        <figcaption>K-Nearest Neighbors — 88.9% test accuracy</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="conclusion">
+  <div class="wrap">
+    <div class="kicker">Conclusion</div>
+    <h2>Landing success is predictable — and learnable</h2>
+    <div class="card">
+      <div class="content">
+        <p class="desc" style="font-size:0.86em;">
+          A tuned Decision Tree classifier predicts whether a Falcon 9 first stage will land successfully with <b style="color:var(--green)">94.4% accuracy</b> on unseen flights, using only information known before launch — payload mass, target orbit, launch site, and booster flight history. Across both the exploratory analysis and the model itself, orbit type and launch site emerge as stronger predictors of landing outcome than payload mass alone, and the year-over-year trend confirms that landing success was a capability SpaceX learned and improved over the life of the program rather than a fixed property of the rocket.
+        </p>
+        <p class="desc">
+          It's worth being precise about what this result can and can't claim. Ninety flights is a small dataset by machine-learning standards, the 94.4% figure rests on an 18-flight test set, and the program itself was still evolving its hardware year over year — which means some of what looks like a "launch site effect" or "orbit effect" is partly a "when in the program's history" effect wearing a disguise. None of that erases the signal in the data; it means the right way to use a model like this is as a continuously retrained estimate that improves with every new flight, not a one-time verdict.
+        </p>
+        <div class="insight"><b>Key insight —</b> Because a successful landing is what lets SpaceX reuse a booster — and reuse is what drives its launch cost down — this kind of pre-launch prediction is exactly the signal a competing launch provider would want when sizing up how aggressively SpaceX can price a given contract.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>IBM Applied Data Science Capstone · Data sources: SpaceX REST API &amp; Wikipedia</p>
+  </div>
+</footer>
+
+</body>
+</html>
