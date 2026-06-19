@@ -929,7 +929,8 @@ footer p {
 .ipf-img {
   width: 100%;
   height: 400px;
-  object-fit: cover;
+  object-fit: contain;
+  background-color: rgb(250, 250, 250);
   border-radius: 2rem;
   display: block;
 }
