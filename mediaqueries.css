@@ -176,6 +176,9 @@
     grid-template-columns: 1fr 1fr;
     gap: 0.85rem;
   }
+  .cert-desktop-only {
+    display: none;
+  }
   .cert-card img {
     width: 64px;
     height: 64px;
