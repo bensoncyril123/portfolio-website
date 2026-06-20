@@ -930,7 +930,7 @@ footer p {
   width: 100%;
   height: 400px;
   object-fit: contain;
-  background-color: rgb(250, 250, 250);
+  background-color: rgb(1, 15, 35);
   border-radius: 2rem;
   display: block;
 }
@@ -938,7 +938,8 @@ footer p {
 .healthcare-img {
   width: 100%;
   height: 400px;
-  object-fit: cover;
+  object-fit: contain;
+  background-color: rgb(0, 24, 63);
   border-radius: 2rem;
   display: block;
 }

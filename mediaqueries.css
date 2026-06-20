@@ -208,6 +208,12 @@
     border-radius: 1rem;
     display: block;
   }
+  .project-img.ipf-img {
+    background-color: rgb(1, 15, 35);
+  }
+  .project-img.healthcare-img {
+    background-color: rgb(0, 24, 63);
+  }
   .color-container {
     width: 100%;
     box-sizing: border-box;
