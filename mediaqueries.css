@@ -214,6 +214,9 @@
   .project-img.healthcare-img {
     background-color: rgb(0, 24, 63);
   }
+  .project-img.biliary-img {
+    background-color: rgb(0, 11, 30);
+  }
   .color-container {
     width: 100%;
     box-sizing: border-box;
