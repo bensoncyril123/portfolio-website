@@ -1,3 +1,15 @@
+// ── ANCHOR NAV WITHOUT CHANGING THE URL ──
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener("click", (e) => {
+    const id = link.getAttribute("href").slice(1);
+    const target = document.getElementById(id);
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
+});
+
 function toggleMenu() {
   const overlay = document.getElementById("overlayMenu");
   const icon = document.querySelector(".hamburger-icon");
