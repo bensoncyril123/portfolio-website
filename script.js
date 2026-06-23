@@ -89,3 +89,54 @@ const certObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
 
 document.querySelectorAll(".cert-card").forEach(el => certObserver.observe(el));
+
+// ── CONTACT FAB + MODAL ──
+(function () {
+  const fab = document.getElementById("contactFabBtn");
+  const overlay = document.getElementById("contactModalOverlay");
+  const closeBtn = document.getElementById("contactModalClose");
+  const form = document.getElementById("contactForm");
+  const status = document.getElementById("contactFormStatus");
+  if (!fab || !overlay || !form) return;
+
+  function openModal() {
+    overlay.classList.add("open");
+    fab.classList.add("open");
+  }
+  function closeModal() {
+    overlay.classList.remove("open");
+    fab.classList.remove("open");
+  }
+
+  fab.addEventListener("click", () => {
+    overlay.classList.contains("open") ? closeModal() : openModal();
+  });
+  closeBtn.addEventListener("click", closeModal);
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const submitBtn = form.querySelector(".contact-form-submit");
+    submitBtn.disabled = true;
+    status.textContent = "Sending...";
+    status.className = "contact-form-status";
+    try {
+      const res = await fetch(form.action, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(form),
+      });
+      if (res.ok) {
+        status.textContent = "Message sent — thanks! I'll reply by email.";
+        status.className = "contact-form-status success";
+        form.reset();
+      } else {
+        throw new Error("Request failed");
+      }
+    } catch (err) {
+      status.textContent = "Something went wrong. Please email me directly instead.";
+      status.className = "contact-form-status error";
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
+})();
