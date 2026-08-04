@@ -227,6 +227,8 @@ a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 5rem 2rem 3rem;
+  box-sizing: border-box;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -238,29 +240,31 @@ a:hover {
 
 .overlay-close {
   position: absolute;
-  top: 1.5rem;
-  right: 2rem;
-  font-size: 2rem;
+  top: 1.2rem;
+  right: 1.5rem;
+  font-size: 1.6rem;
   cursor: pointer;
   color: #333;
+  line-height: 1;
 }
 
 .overlay-links {
   list-style: none;
   text-align: center;
   padding: 0;
+  width: 100%;
 }
 
 .overlay-links li {
-  margin: 1rem 0;
+  margin: 0.85rem 0;
 }
 
 .overlay-links a {
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: #333;
   text-decoration: none;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   transition: color 0.2s ease;
 }
 
@@ -269,17 +273,22 @@ a:hover {
 }
 
 .overlay-theme-toggle {
-  margin-top: 2rem;
-  width: 2.75rem;
-  height: 2.75rem;
-  border-radius: 50%;
+  margin-top: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 1.2rem;
+  border-radius: 2rem;
   border: 1.5px solid rgba(0,0,0,0.15);
   color: #333;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
 }
 
 .overlay-theme-toggle svg {
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1rem;
+  height: 1rem;
 }
 
 [data-theme="dark"] .overlay-theme-toggle {
