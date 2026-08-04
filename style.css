@@ -1413,3 +1413,8 @@ nav,
 [data-theme="dark"] .logo img {
   filter: brightness(0) invert(1);
 }
+
+/* Checkmark icons: just invert to preserve badge detail */
+[data-theme="dark"] article img.icon {
+  filter: invert(1);
+}
