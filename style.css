@@ -1408,7 +1408,8 @@ nav,
   background-color: #1e293b;
 }
 
-/* Make PNG icons visible on dark backgrounds */
-[data-theme="dark"] img.icon {
+/* Make PNG icons and logo visible on dark backgrounds */
+[data-theme="dark"] img.icon,
+[data-theme="dark"] .logo img {
   filter: brightness(0) invert(1);
 }
