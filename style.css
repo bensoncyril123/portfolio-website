@@ -1166,3 +1166,249 @@ footer p {
 .contact-form-status.error {
   color: #c0392b;
 }
+
+/* ── THEME TOGGLE BUTTON ── */
+
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.45rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #222;
+  border-radius: 50%;
+  transition: background 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  background: rgba(0, 0, 0, 0.07);
+}
+
+.theme-toggle svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: block;
+}
+
+/* Light mode: show moon icon */
+.theme-toggle .sun-icon  { display: none; }
+.theme-toggle .moon-icon { display: block; }
+
+/* Dark mode: show sun icon */
+[data-theme="dark"] .theme-toggle .sun-icon  { display: block; }
+[data-theme="dark"] .theme-toggle .moon-icon { display: none; }
+
+/* ── SMOOTH THEME TRANSITIONS ── */
+
+body,
+nav,
+.details-container,
+.color-container,
+.cert-card,
+.contact-info-upper-container,
+.overlay-menu,
+.contact-modal-overlay,
+.contact-modal-header,
+.contact-form input,
+.contact-form textarea,
+.contact-fab,
+.timeline-dot {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ── DARK MODE OVERRIDES ── */
+
+[data-theme="dark"] body {
+  background-color: #0f172a;
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] p {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3 {
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] a {
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] a:hover {
+  color: #94a3b8;
+  text-decoration-color: #94a3b8;
+}
+
+[data-theme="dark"] nav {
+  background-color: #1e293b;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .nav-links a::after {
+  background: #f1f5f9;
+}
+
+[data-theme="dark"] .theme-toggle {
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .hamburger-icon span {
+  background-color: #f1f5f9;
+}
+
+[data-theme="dark"] .overlay-menu {
+  background-color: #0f172a;
+}
+
+[data-theme="dark"] .overlay-close {
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .overlay-links a {
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .details-container {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .color-container {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .timeline::before {
+  background: #334155;
+}
+
+[data-theme="dark"] .timeline-dot {
+  background: #0f172a;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .timeline-company,
+[data-theme="dark"] .timeline-date,
+[data-theme="dark"] .experience-sub-title {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .cert-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .cert-name {
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .cert-issuer {
+  color: #64748b;
+}
+
+[data-theme="dark"] .cert-intro {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .project-title {
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .project-btn {
+  color: #f1f5f9;
+  border-color: #475569;
+}
+
+[data-theme="dark"] .btn-color-1,
+[data-theme="dark"] .btn-color-2 {
+  border-color: #475569;
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .btn-color-1,
+[data-theme="dark"] .btn-color-2:hover {
+  background: #334155;
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .btn-color-1:hover {
+  background: #475569;
+}
+
+[data-theme="dark"] .btn-color-2:hover {
+  border-color: #94a3b8;
+}
+
+[data-theme="dark"] .contact-info-upper-container {
+  border-color: #334155;
+  background: #1e293b;
+}
+
+[data-theme="dark"] .contact-modal-overlay {
+  background: #1e293b;
+}
+
+[data-theme="dark"] .contact-modal-header {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .contact-modal-header h2 {
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .contact-modal-header p,
+[data-theme="dark"] .contact-modal-close {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .contact-form input,
+[data-theme="dark"] .contact-form textarea {
+  background: #0f172a;
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .contact-form input::placeholder,
+[data-theme="dark"] .contact-form textarea::placeholder {
+  color: #64748b;
+}
+
+[data-theme="dark"] .contact-form-submit {
+  background: #334155;
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .contact-form-submit:hover {
+  background: #475569;
+}
+
+[data-theme="dark"] .contact-fab {
+  background: #334155;
+}
+
+[data-theme="dark"] .contact-fab:hover {
+  background: #475569;
+}
+
+[data-theme="dark"] .spacex-img {
+  background-color: #1e293b;
+}
+
+[data-theme="dark"] .project-img:not([class*="-img"]) {
+  background-color: #1e293b;
+}
+
+/* Make PNG icons visible on dark backgrounds */
+[data-theme="dark"] img.icon {
+  filter: brightness(0) invert(1);
+}

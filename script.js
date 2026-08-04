@@ -1,3 +1,25 @@
+// ── DARK / LIGHT THEME ──
+(function () {
+  const root = document.documentElement;
+  const saved = localStorage.getItem('theme');
+  if (saved === 'dark') root.setAttribute('data-theme', 'dark');
+
+  function toggleTheme() {
+    const isDark = root.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      root.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+    } else {
+      root.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    }
+  }
+
+  document.querySelectorAll('.theme-toggle').forEach(btn => {
+    btn.addEventListener('click', toggleTheme);
+  });
+})();
+
 // ── ANCHOR NAV WITHOUT CHANGING THE URL ──
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener("click", (e) => {
