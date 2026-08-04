@@ -65,7 +65,23 @@
   }
 }
 
+@media screen and (max-width: 1200px) {
+  .overlay-links a {
+    font-size: 1.1rem;
+  }
+  .overlay-links li {
+    margin: 0.7rem 0;
+  }
+}
+
 @media screen and (max-width: 600px) {
+  .overlay-links a {
+    font-size: 0.95rem;
+  }
+  .overlay-links li {
+    margin: 0.5rem 0;
+  }
+}
   #contact,
   footer {
     height: 40vh;
