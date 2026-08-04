@@ -252,11 +252,11 @@ a:hover {
 }
 
 .overlay-links li {
-  margin: 2rem 0;
+  margin: 1rem 0;
 }
 
 .overlay-links a {
-  font-size: 2rem;
+  font-size: 1.35rem;
   font-weight: 600;
   color: #333;
   text-decoration: none;
@@ -266,6 +266,25 @@ a:hover {
 
 .overlay-links a:hover {
   color: #c9a84c;
+}
+
+.overlay-theme-toggle {
+  margin-top: 2rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0,0,0,0.15);
+  color: #333;
+}
+
+.overlay-theme-toggle svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+[data-theme="dark"] .overlay-theme-toggle {
+  border-color: rgba(255,255,255,0.2);
+  color: #f1f5f9;
 }
 
 body.no-scroll {
