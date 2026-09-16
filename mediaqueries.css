@@ -63,9 +63,6 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
   }
-}
-
-@media screen and (max-width: 1200px) {
   .overlay-links a {
     font-size: 1.1rem;
   }
@@ -75,12 +72,6 @@
 }
 
 @media screen and (max-width: 600px) {
-  .overlay-links a {
-    font-size: 0.95rem;
-  }
-  .overlay-links li {
-    margin: 0.5rem 0;
-  }
   #contact,
   footer {
     height: 40vh;
@@ -247,5 +238,11 @@
     left: 1rem;
     width: auto;
     bottom: 5.5rem;
+  }
+  .overlay-links a {
+    font-size: 0.95rem;
+  }
+  .overlay-links li {
+    margin: 0.5rem 0;
   }
 }
