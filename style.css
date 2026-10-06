@@ -561,6 +561,10 @@ section {
   gap: 1rem 1.5rem;
 }
 
+.tools-grid-3col {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 article {
   display: flex;
   align-items: center;
